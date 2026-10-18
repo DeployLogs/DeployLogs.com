@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Examples · DeployLogs</title>
+<meta name="description" content="What DeployLogs looks like: the runlist, estimates, the overview, changes, smoke tests, data migration, teams and the audit log.">
+<link rel="canonical" href="https://deploylogs.com/examples.html">
+<meta name="theme-color" content="#fbf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16131a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deploylogs.com/examples.html">
+<meta property="og:site_name" content="DeployLogs">
+<meta property="og:title" content="Examples · DeployLogs">
+<meta property="og:description" content="What DeployLogs looks like: the runlist, estimates, the overview, changes, smoke tests, data migration, teams and the audit log.">
+<meta property="og:image" content="https://deploylogs.com/og-image.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An orange rubber duck beside the words DeployLogs, Rubber duck deploys">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deploylogs.com/og-image.png?v=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
+<link rel="icon" href="/favicon.ico?v=1" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="/styles.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-bar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/brand/logo.svg" alt="" width="36" height="36"><span>DeployLogs</span></a>
+    <nav class="site-nav" aria-label="Site">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/examples.html" aria-current="page">Examples</a></li>
+        <li><a href="/guides/">Guides</a></li>
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/legal.html">Legal</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wrap">
+    <h1>Examples</h1>
+    <p class="section-lede">
+      Every example comes from the sample deploy that DeployLogs can fill in for
+      you: a made-up weekend cutover of a billing system across five teams.
+      Columns with an orange heading are worked out for you.
+    </p>
+    <ul class="toc">
+      <li><a href="#runlist">The runlist</a></li>
+      <li><a href="#estimates">Estimates</a></li>
+      <li><a href="#overview">The overview</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#smoke-tests">Smoke tests</a></li>
+      <li><a href="#data">Data migration</a></li>
+      <li><a href="#teams">Teams</a></li>
+      <li><a href="#lock">Lock and audit log</a></li>
+      <li><a href="#build">Building a tracker</a></li>
+    </ul>
+  </section>
+
+  <section class="wrap example" aria-labelledby="runlist">
+    <h2 id="runlist">The runlist</h2>
+    <p class="section-lede">Steps from every team, in run order. Each step says what it waits for and what it hands over.</p>
+    <div class="sheet" role="region" aria-label="Steps example" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">ID</th><th scope="col">Run order</th><th scope="col">Team</th><th scope="col">Step</th><th scope="col">Waits for</th><th scope="col" class="worked-out">Can start?</th><th scope="col">Hands over</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">D-03</th><td class="num">8</td><td>Billing</td><td>Turn on the new billing feature</td><td></td><td><span class="chip good">Ready</span></td><td></td></tr>
+          <tr><th scope="row">D-04</th><td class="num">9</td><td>Billing</td><td>Deploy invoice and credit memo templates</td><td>D-03</td><td><span class="chip warn">Waiting on D-03 (Billing)</span></td><td>Template IDs, for the integration release</td></tr>
+          <tr><th scope="row">D-05</th><td class="num">10</td><td>Integration</td><td>Deploy the integration release</td><td>D-01, D-04</td><td><span class="chip warn">Waiting on D-01 (CRM), D-04 (Billing)</span></td><td></td></tr>
+          <tr><th scope="row">C-01</th><td class="num">15</td><td>Integration</td><td>Resume order sync and watch the first orders</td><td>M-03</td><td><span class="chip warn">Waiting on M-03 (ERP)</span></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="legend">On D-05, "Received from earlier steps" reads: D-04: Template IDs, for the integration release (not handed over yet). Once Billing fills in the value, it shows there instead.</p>
+  </section>
+
+  <section class="wrap example" aria-labelledby="estimates">
+    <h2 id="estimates">Estimates</h2>
+    <p class="section-lede">Plan hours use the longest practice run, times the data size factor. With no practice run, they use the owner's estimate.</p>
+    <div class="sheet" role="region" aria-label="Estimates example" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">ID</th><th scope="col">Step</th><th scope="col">Owner estimate</th><th scope="col">Practice runs</th><th scope="col">Data size factor</th><th scope="col" class="worked-out">Plan hours</th><th scope="col" class="worked-out">Estimate source</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">M-01</th><td>Run the account migration</td><td class="num">3</td><td class="num">3, 2.5</td><td class="num">1.4</td><td class="num">4.2</td><td><span class="chip good">Practiced</span></td></tr>
+          <tr><th scope="row">M-02</th><td>Migrate billing accounts</td><td class="num">4</td><td></td><td></td><td class="num">4</td><td><span class="chip warn">Owner's guess</span></td></tr>
+          <tr><th scope="row">M-03</th><td>Load customer records</td><td></td><td></td><td></td><td></td><td><span class="chip bad">Missing</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap example" aria-labelledby="overview">
+    <h2 id="overview">The overview</h2>
+    <p class="section-lede">Every number says where it comes from.</p>
+    <div class="sheet" role="region" aria-label="Overview example" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Row</th><th scope="col" class="worked-out">Value</th><th scope="col">Where this comes from</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Steps left</th><td class="num">19</td><td>Steps that are not Done or Skipped</td></tr>
+          <tr><th scope="row">Projected finish</th><td>Sun 25 Oct, 12:12 am</td><td>Now or the planned start, plus plan hours and planned waits left</td></tr>
+          <tr><th scope="row">On track?</th><td><span class="chip good">Yes, 29.8 hrs to spare</span></td><td>Projected finish compared with the deadline</td></tr>
+          <tr><th scope="row">Hours to roll back everything</th><td class="num">13</td><td>Rollback hours of every step except Skipped ones</td></tr>
+          <tr><th scope="row">Latest safe time to keep going</th><td>Sat 24 Oct, 7:48 am</td><td>Deadline minus plan hours left, planned waits left and the time to roll back everything</td></tr>
+          <tr><th scope="row">Plan hours backed by a practice run</th><td class="num">44%</td><td>Plan hours of Practiced steps, out of all plan hours</td></tr>
+          <tr><th scope="row">Teams not ready</th><td><span class="chip bad">2</span></td><td>Teams whose Ready? is Not ready or No steps listed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap example" aria-labelledby="changes">
+    <h2 id="changes">Changes</h2>
+    <p class="section-lede">Each change in the deploy, and whether it is covered.</p>
+    <div class="sheet" role="region" aria-label="Changes example" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">ID</th><th scope="col">Change</th><th scope="col" class="worked-out">Steps</th><th scope="col" class="worked-out">Smoke tests</th><th scope="col" class="worked-out">Covered?</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">F-01</th><td>New billing feature</td><td class="num">2</td><td class="num">1</td><td><span class="chip bad">Rollback missing</span></td></tr>
+          <tr><th scope="row">F-02</th><td>New invoice and credit memo templates</td><td class="num">1</td><td class="num">1</td><td><span class="chip warn">Not signed off yet</span></td></tr>
+          <tr><th scope="row">F-06</th><td>Customer records flow to ERP</td><td class="num">2</td><td class="num">0</td><td><span class="chip bad">No smoke test</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap example" aria-labelledby="smoke-tests">
+    <h2 id="smoke-tests">Smoke tests</h2>
+    <p class="section-lede">Every test names the person in the business who signs off the result.</p>
+    <div class="sheet" role="region" aria-label="Smoke tests example" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">ID</th><th scope="col">What we are testing</th><th scope="col">Result</th><th scope="col">Business sign-off by</th><th scope="col">Business sign-off</th><th scope="col" class="worked-out">Sign-off check</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">T-01</th><td>A new order syncs to billing on the right billing account</td><td><span class="chip good">Passed</span></td><td>Morgan</td><td><span class="chip good">Approved</span></td><td><span class="chip good">Signed off</span></td></tr>
+          <tr><th scope="row">T-03</th><td>Invoice uses the new template</td><td><span class="chip good">Passed</span></td><td>Alex</td><td></td><td><span class="chip warn">Waiting for sign-off</span></td></tr>
+          <tr><th scope="row">T-05</th><td>Test bill run groups charges by billing attributes</td><td>Not run</td><td></td><td></td><td><span class="chip bad">No one accountable</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap example" aria-labelledby="data">
+    <h2 id="data">Data migration</h2>
+    <p class="section-lede">Record counts before, expected after, and loaded. Merging records can make the expected count lower.</p>
+    <div class="sheet" role="region" aria-label="Data migration example" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">ID</th><th scope="col">What is moving</th><th scope="col">Records before</th><th scope="col">Records expected after</th><th scope="col">Records loaded</th><th scope="col" class="worked-out">Match</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">DM-01</th><td>Accounts</td><td class="num">12,480</td><td class="num">12,480</td><td class="num">12,480</td><td><span class="chip good">Matches</span></td></tr>
+          <tr><th scope="row">DM-02</th><td>Billing accounts</td><td class="num">9,310</td><td class="num">8,655</td><td class="num">8,642</td><td><span class="chip bad">Does not match</span></td></tr>
+          <tr><th scope="row">DM-03</th><td>Customer records to ERP</td><td></td><td></td><td></td><td><span class="chip bad">No expected count</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="legend">Loaded counts here are made up to show each result.</p>
+  </section>
+
+  <section class="wrap example" aria-labelledby="teams">
+    <h2 id="teams">Teams</h2>
+    <p class="section-lede">Every team is held to the same rule. A team that has not added its steps shows that too.</p>
+    <div class="sheet" role="region" aria-label="Teams example" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Team</th><th scope="col" class="worked-out">Steps</th><th scope="col" class="worked-out">Practiced</th><th scope="col" class="worked-out">Ready?</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">CRM</th><td class="num">7</td><td class="num">100%</td><td><span class="chip good">Ready</span></td></tr>
+          <tr><th scope="row">Billing</th><td class="num">6</td><td class="num">0%</td><td><span class="chip bad">Not ready</span></td></tr>
+          <tr><th scope="row">Business</th><td class="num">1</td><td class="num">0%</td><td><span class="chip warn">Partly practiced</span></td></tr>
+          <tr><th scope="row">Finance</th><td class="num">0</td><td></td><td><span class="chip bad">No steps listed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap example" aria-labelledby="lock">
+    <h2 id="lock">Lock and audit log</h2>
+    <p class="section-lede">During a run, only the person running it can edit. The audit log records every edit.</p>
+    <div class="sheet" role="region" aria-label="Audit log example" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">When</th><th scope="col">Who</th><th scope="col">Tab</th><th scope="col">Row</th><th scope="col">Field</th><th scope="col">Old value</th><th scope="col">New value</th></tr></thead>
+        <tbody>
+          <tr><td>Fri 23 Oct, 6:02 pm</td><td>avery@example.com</td><td>Steps</td><td>D-01</td><td>Status</td><td>Not started</td><td>In progress</td></tr>
+          <tr><td>Fri 23 Oct, 7:41 pm</td><td>avery@example.com</td><td>Steps</td><td>D-04</td><td>Value handed over</td><td></td><td>INV-2207, CM-0419</td></tr>
+          <tr><td>Fri 23 Oct, 7:43 pm</td><td>avery@example.com</td><td>Gates</td><td>Row 5</td><td>Call</td><td></td><td>Go</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap example" aria-labelledby="build">
+    <h2 id="build">Building a tracker</h2>
+    <p class="section-lede">Building takes about a minute. The dialog shows each step as it goes.</p>
+    <div class="dialog" role="img" aria-label="The build dialog at step 6 of 17, Laying out Steps, 23 seconds in">
+      <h3>Build a new tracker</h3>
+      <progress max="17" value="5"></progress>
+      <p>Step 6 of 17: Laying out Steps… <span class="tick">23s</span></p>
+      <p class="legend">This takes about a minute. Keep this window open until it finishes.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <p>Made by <a href="https://salesforcegirl.org">salesforcegirl</a>, who also makes <a href="https://saasylogs.com">Saasy Logs</a>. © 2026</p>
+    <ul>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+      <li><a href="/legal.html">Legal</a></li>
+      <li><a href="mailto:support@deploylogs.com">support@deploylogs.com</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

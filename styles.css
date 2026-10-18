@@ -1,0 +1,357 @@
+/* ==========================================================================
+   DeployLogs — deploylogs.com
+   ==========================================================================
+   One stylesheet for every page. No build step, no framework, nothing inline
+   in the HTML (decided 18 Oct: styles live here, not in the pages).
+
+   THE DUCK THEME, shared with salesforcegirl.org. The duck itself is always
+   the bright orange #f28c28: it is decoration, so it does not have to pass
+   text contrast. Text and buttons use the deeper oranges, which do.
+
+   Contrast, measured 18 Oct (WCAG 2.2 AA needs 4.5:1 for text):
+     Light  ink #231e27 on page #fbf7f2 ............ 15.3:1
+            muted #6d6472 on page .................. 5.3:1  (4.87 on #f4ede5)
+            accent #b45309 on page ................. 4.71:1 (#d9650b failed at 3.4)
+            white on accent #b45309 ................ 5.02:1
+            hover #9a3412 on page .................. 6.85:1
+     Dark   text #efe9e4 on page #16131a ........... 15.27:1
+            muted #a39aa8 on page .................. 6.78:1
+            accent #f28c28 on page ................. 7.49:1
+            ink #1a1208 on accent #f28c28 .......... 7.55:1
+            hover #f6a85c on page .................. 9.35:1  (#c2410c, the
+              light theme's hover, measured 3.55:1 here and failed)
+     Chips  good 8.53:1, warn 7.92:1, bad 6.82:1, and every chip carries a
+            word, so colour is never the only signal.
+
+   Light is the default; dark follows the reader's system setting.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  --bg: #fbf7f2;
+  --surface: #ffffff;
+  --surface-2: #f4ede5;
+  --border: #eadfd3;
+  --text: #231e27;
+  --muted: #6d6472;
+  --accent: #b45309;
+  --accent-deep: #9a3412;
+  --on-accent: #ffffff;
+  --duck: #f28c28;
+  --eye: #231e27;
+  --focus: #231e27;
+
+  --good-bg: #d9ead3; --good-fg: #1e4620;
+  --warn-bg: #fce8b2; --warn-fg: #5c4000;
+  --bad-bg:  #f4c7c3; --bad-fg:  #7a1e14;
+
+  --radius: 0.75rem;
+  --wrap: 68rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16131a;
+    --surface: #1f1b24;
+    --surface-2: #26212d;
+    --border: #332d3b;
+    --text: #efe9e4;
+    --muted: #a39aa8;
+    --accent: #f28c28;
+    --accent-deep: #f6a85c;
+    --on-accent: #1a1208;
+    --eye: #16131a;
+    --focus: #efe9e4;
+  }
+}
+
+/* ---------------------------------------------------------------- base --- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-underline-offset: 0.15em; }
+a:hover { color: var(--accent-deep); }
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 0.75rem; }
+h1 { font-size: clamp(2.25rem, 6vw, 3.5rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.125rem; }
+
+p { margin: 0 0 1rem; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -10rem;
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  z-index: 10;
+}
+.skip:focus { top: 1rem; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ------------------------------------------------------------- site bar --- */
+
+.site-bar { border-bottom: 1px solid var(--border); }
+
+.site-bar .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  min-height: 4rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.brand img { width: 2.25rem; height: auto; }
+.brand:hover { color: var(--text); }
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--text); text-decoration: underline; }
+
+/* ----------------------------------------------------------------- hero --- */
+
+.hero { padding: 3.5rem 0 2.5rem; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+@media (min-width: 52rem) {
+  .hero-grid { grid-template-columns: 1.4fr 1fr; }
+}
+
+.hero-duck { width: min(18rem, 70vw); height: auto; justify-self: center; }
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.lede { font-size: 1.1875rem; color: var(--text); max-width: 40rem; }
+.lede.small { font-size: 1.0625rem; color: var(--muted); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.button:hover { background: var(--accent-deep); border-color: var(--accent-deep); color: var(--on-accent); }
+.button.ghost { background: transparent; color: var(--accent); }
+.button.ghost:hover { background: var(--surface-2); color: var(--accent-deep); }
+
+/* ------------------------------------------------------------- sections --- */
+
+main section { padding: 2.5rem 1rem; }
+main section.wrap { padding-left: 1rem; padding-right: 1rem; }
+
+.section-lede { color: var(--muted); max-width: 44rem; }
+
+.note { color: var(--muted); font-size: 0.9375rem; margin-top: 1rem; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.card p:last-child { margin-bottom: 0; }
+
+.card .more { font-weight: 600; }
+
+/* A word in a coloured pill: the word carries the meaning, the colour helps. */
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 0; }
+.chip {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.chip.good { background: var(--good-bg); color: var(--good-fg); }
+.chip.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.chip.bad  { background: var(--bad-bg);  color: var(--bad-fg); }
+
+.rules { padding-left: 1.25rem; max-width: 46rem; }
+.rules li { margin-bottom: 0.75rem; }
+
+.stages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.stage {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--duck);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.stage h3 { margin-bottom: 0.25rem; }
+.stage-sub { color: var(--muted); font-size: 0.9375rem; }
+.stage ul { padding-left: 1.1rem; margin: 0; }
+
+/* ------------------------------------------------- sheet-style examples --- */
+
+/* Example tables scroll sideways inside their own box, never the page. */
+.sheet {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 1rem;
+}
+
+.sheet table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 36rem;
+  font-size: 0.9375rem;
+}
+.sheet th, .sheet td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+.sheet thead th { background: var(--surface-2); font-size: 0.875rem; }
+.sheet thead th.worked-out { background: var(--warn-bg); color: var(--warn-fg); }
+.sheet tbody th { font-weight: 600; white-space: nowrap; }
+.sheet .section-row th { background: var(--surface-2); color: var(--muted); font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.sheet .num { text-align: right; font-variant-numeric: tabular-nums; }
+.sheet tr:last-child th, .sheet tr:last-child td { border-bottom: 0; }
+
+.legend { color: var(--muted); font-size: 0.875rem; margin-top: 0.5rem; }
+
+/* A mock of the build dialog. */
+.dialog {
+  max-width: 28rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+.dialog h3 { margin-bottom: 0.75rem; }
+.dialog progress { width: 100%; height: 0.75rem; accent-color: var(--accent); }
+.dialog .tick { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------ examples --- */
+
+.toc { padding-left: 1.25rem; columns: 2 14rem; }
+.example + .example { border-top: 1px solid var(--border); }
+
+/* ---------------------------------------------------------------- legal --- */
+
+.legal { max-width: 46rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.legal h2 { margin-top: 2rem; font-size: 1.375rem; }
+.legal .updated { color: var(--muted); }
+
+/* --------------------------------------------------------------- footer --- */
+
+footer {
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  padding: 1.5rem 0 2.5rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+footer ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; }
+footer p { margin: 0; }
+
+/* --------------------------------------------------------------- guides --- */
+
+.crumb { margin-bottom: 0.25rem; font-weight: 600; }
+.guide h2 { font-size: 1.25rem; }
+.guide ol, .guide ul { padding-left: 1.4rem; }
+.guide li { margin-bottom: 0.5rem; }
+.guide .chip { white-space: normal; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9375em;
+  background: var(--surface-2);
+  padding: 0.05rem 0.35rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+.guide-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-weight: 600; }
+.guide-nav p { margin: 0; }
+.guide-list { padding-left: 1.4rem; }
+.guide-list li { margin-bottom: 1rem; font-size: 1.125rem; font-weight: 600; }
+.guide-summary { font-size: 1rem; font-weight: 400; color: var(--muted); }

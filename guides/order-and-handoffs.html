@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order, waits and handoffs · DeployLogs</title>
+<meta name="description" content="Put every team&#x27;s steps in one order, and pass IDs from one team to the next.">
+<link rel="canonical" href="https://deploylogs.com/guides/order-and-handoffs.html">
+<meta name="theme-color" content="#fbf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16131a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deploylogs.com/guides/order-and-handoffs.html">
+<meta property="og:site_name" content="DeployLogs">
+<meta property="og:title" content="Order, waits and handoffs · DeployLogs">
+<meta property="og:description" content="Put every team&#x27;s steps in one order, and pass IDs from one team to the next.">
+<meta property="og:image" content="https://deploylogs.com/og-image.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An orange rubber duck beside the words DeployLogs, Rubber duck deploys">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deploylogs.com/og-image.png?v=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
+<link rel="icon" href="/favicon.ico?v=1" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="/styles.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-bar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/brand/logo.svg" alt="" width="36" height="36"><span>DeployLogs</span></a>
+    <nav class="site-nav" aria-label="Site">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/examples.html">Examples</a></li>
+        <li><a href="/guides/" aria-current="page">Guides</a></li>
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/legal.html">Legal</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <article class="wrap legal guide">
+    <p class="crumb"><a href="/guides/">Guides</a></p>
+    <h1>Order, waits and handoffs</h1>
+    <p class="section-lede">Put every team's steps in one order, and pass IDs from one team to the next.</p>
+
+<h2>Run order</h2>
+<p>Give each step a <strong>Run order</strong>: 1, 2, 3, across every team. Sort the Steps tab by Run order to see the runlist.</p>
+<h2>Waits for</h2>
+<p>In <strong>Waits for (IDs)</strong>, list the steps that must be done first, separated by commas: <code>D-01, D-04</code>. Often it is another team's step.</p>
+<p><strong>Can start?</strong> then shows:</p>
+<ul>
+  <li><span class="chip good">Ready</span> nothing left to wait for.</li>
+  <li><span class="chip warn">Waiting on D-04 (Billing)</span> the steps not yet Done or Skipped, and their team.</li>
+  <li><span class="chip bad">Check order: waits for a later step</span> the step waits for a step with a later run order. Fix the order.</li>
+</ul>
+<p>If someone sets a waiting step to In progress, a "Still waiting" message names what it is waiting on.</p>
+<h2>Handoffs</h2>
+<ol>
+  <li>On the step that creates something the next team needs, write what it is in <strong>Hands over</strong>: "Invoice template IDs, for the integration release".</li>
+  <li>On the day, the owner puts the real value in <strong>Value handed over</strong>.</li>
+  <li>The waiting step shows it in <strong>Received from earlier steps</strong>: "D-04: Invoice template IDs = INV-2207". Until then it says "(not handed over yet)".</li>
+</ol>
+<p>Overview counts steps that are Done but handed nothing over.</p>
+
+    <nav class="guide-nav" aria-label="Guides"><p><a href="estimates.html">Previous: Estimates and practice runs</a></p><p><a href="smoke-tests-and-sign-off.html">Next: Smoke tests and sign-off</a></p></nav>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <p>Made by <a href="https://salesforcegirl.org">salesforcegirl</a>, who also makes <a href="https://saasylogs.com">Saasy Logs</a>. © 2026</p>
+    <ul>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+      <li><a href="/legal.html">Legal</a></li>
+      <li><a href="mailto:support@deploylogs.com">support@deploylogs.com</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

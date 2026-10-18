@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeployLogs</title>
+<meta name="description" content="A deploy runlist and go/no-go tracker for Google Sheets, for deploys that cross teams.">
+<link rel="canonical" href="https://deploylogs.com/">
+<meta name="theme-color" content="#fbf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16131a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deploylogs.com/">
+<meta property="og:site_name" content="DeployLogs">
+<meta property="og:title" content="DeployLogs">
+<meta property="og:description" content="A deploy runlist and go/no-go tracker for Google Sheets, for deploys that cross teams.">
+<meta property="og:image" content="https://deploylogs.com/og-image.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An orange rubber duck beside the words DeployLogs, Rubber duck deploys">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deploylogs.com/og-image.png?v=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
+<link rel="icon" href="/favicon.ico?v=1" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="/styles.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-bar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/brand/logo.svg" alt="" width="36" height="36"><span>DeployLogs</span></a>
+    <nav class="site-nav" aria-label="Site">
+      <ul>
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="/examples.html">Examples</a></li>
+        <li><a href="/guides/">Guides</a></li>
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/legal.html">Legal</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Rubber duck deploys.</h1>
+        <p class="lede">
+          Rubber duck debugging is talking your code through, step by step, until
+          the problem shows itself. DeployLogs does that for a deploy: every
+          team's steps in one runlist, walked through in a practice run before
+          the night it counts.
+        </p>
+        <p class="lede small">A deploy runlist and go/no-go tracker for Google Sheets, for deploys that cross teams.</p>
+        <p class="actions">
+          <a class="button" href="/examples.html">See examples</a>
+          <a class="button ghost" href="/guides/">Read the guides</a>
+        </p>
+      </div>
+      <img class="hero-duck" src="/brand/logo.svg" alt="" width="288" height="288">
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="gaps">
+    <h2 id="gaps">Deploys fail in the gaps between teams</h2>
+    <p class="section-lede">
+      One team runs sprints, another keeps its steps in someone's head. One
+      system creates the IDs the next team needs, and nobody wrote that down. An
+      estimate nobody has run becomes the plan. DeployLogs puts every team in
+      one runlist, in the order it runs, held to the same rules.
+    </p>
+  </section>
+
+  <section class="wrap" aria-labelledby="does">
+    <h2 id="does">What it does</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>One runlist, in order</h3>
+        <p>Every step from every team, in the order the deploy runs, with what each step waits for and whether it can start.</p>
+        <p class="more"><a href="/examples.html#runlist">See the runlist</a></p>
+      </article>
+      <article class="card">
+        <h3>Handoffs between teams</h3>
+        <p>When one team creates something the next team needs, the value shows up on the step that is waiting for it.</p>
+        <p class="more"><a href="/guides/order-and-handoffs.html">Read the guide</a></p>
+      </article>
+      <article class="card">
+        <h3>Estimates with a source</h3>
+        <p>Every estimate is marked Practiced, Owner's guess or Missing. Practice runs replace guesses.</p>
+        <p class="more"><a href="/examples.html#estimates">See estimates</a></p>
+      </article>
+      <article class="card">
+        <h3>Go or no-go</h3>
+        <p>Each stage ends at a gate every team signs. The overview shows the latest time it is safe to keep going, with the rollback counted.</p>
+        <p class="more"><a href="/examples.html#overview">See the overview</a></p>
+      </article>
+      <article class="card">
+        <h3>Smoke tests and sign-off</h3>
+        <p>Every change has a smoke test and a named person in the business who signs off the result.</p>
+        <p class="more"><a href="/examples.html#smoke-tests">See smoke tests</a></p>
+      </article>
+      <article class="card">
+        <h3>Lock, log and close</h3>
+        <p>Lock the tracker for the run, record every edit, and close it out as the record of the deploy.</p>
+        <p class="more"><a href="/guides/after-the-deploy.html">Read the guide</a></p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="status">
+    <h2 id="status">Where it is today</h2>
+    <p class="section-lede">DeployLogs is in testing and not on the Google Workspace Marketplace yet.</p>
+    <div class="stages">
+      <div class="stage">
+        <h3>Now</h3>
+        <p class="stage-sub">Built and in testing</p>
+        <ul>
+          <li>Runlist, waits and handoffs</li>
+          <li>Estimates and plan hours</li>
+          <li>Stages, gates and the overview</li>
+          <li>Changes, smoke tests, data migration</li>
+          <li>Lock, audit log, close out</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <h3>Next</h3>
+        <p class="stage-sub">Being designed</p>
+        <ul>
+          <li>Steps that stop the deploy if they fail</li>
+          <li>A freeze window</li>
+          <li>Practice runs that record their own times</li>
+          <li>Results after go-live</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <h3>Later</h3>
+        <p class="stage-sub">Ideas</p>
+        <ul>
+          <li>Fill the runlist from Jira</li>
+          <li>Google Workspace Marketplace</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <p>Made by <a href="https://salesforcegirl.org">salesforcegirl</a>, who also makes <a href="https://saasylogs.com">Saasy Logs</a>. © 2026</p>
+    <ul>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+      <li><a href="/legal.html">Legal</a></li>
+      <li><a href="mailto:support@deploylogs.com">support@deploylogs.com</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

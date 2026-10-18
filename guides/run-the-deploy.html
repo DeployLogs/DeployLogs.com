@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run the deploy · DeployLogs</title>
+<meta name="description" content="Lock the tracker, work through the runlist, and make the go or no-go calls.">
+<link rel="canonical" href="https://deploylogs.com/guides/run-the-deploy.html">
+<meta name="theme-color" content="#fbf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16131a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deploylogs.com/guides/run-the-deploy.html">
+<meta property="og:site_name" content="DeployLogs">
+<meta property="og:title" content="Run the deploy · DeployLogs">
+<meta property="og:description" content="Lock the tracker, work through the runlist, and make the go or no-go calls.">
+<meta property="og:image" content="https://deploylogs.com/og-image.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An orange rubber duck beside the words DeployLogs, Rubber duck deploys">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deploylogs.com/og-image.png?v=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
+<link rel="icon" href="/favicon.ico?v=1" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="/styles.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-bar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/brand/logo.svg" alt="" width="36" height="36"><span>DeployLogs</span></a>
+    <nav class="site-nav" aria-label="Site">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/examples.html">Examples</a></li>
+        <li><a href="/guides/" aria-current="page">Guides</a></li>
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/legal.html">Legal</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <article class="wrap legal guide">
+    <p class="crumb"><a href="/guides/">Guides</a></p>
+    <h1>Run the deploy</h1>
+    <p class="section-lede">Lock the tracker, work through the runlist, and make the go or no-go calls.</p>
+
+<h2>Before you start</h2>
+<ol>
+  <li>The person running the deploy chooses <strong>Extensions &gt; DeployLogs &gt; Turn on the audit log</strong>, once.</li>
+  <li>They click <strong>Lock or unlock</strong> on Overview, or choose <strong>Lock for the run</strong>. Every tab is locked so only they can edit. Everyone else can still see every tab.</li>
+</ol>
+<h2>Work through the steps</h2>
+<ol>
+  <li>Take the next step whose <strong>Can start?</strong> is Ready.</li>
+  <li>Set <strong>Status</strong> to In progress. <strong>Started</strong> fills in.</li>
+  <li>When it is done, set Status to Done. <strong>Finished</strong> and <strong>Actual hours</strong> fill in. Fill in <strong>Value handed over</strong> if the step hands something over.</li>
+  <li>If something goes wrong, add it to <strong>Issues</strong>.</li>
+</ol>
+<h2>Watch the overview</h2>
+<ul>
+  <li><strong>On track?</strong> compares the projected finish with the deadline.</li>
+  <li><strong>Latest safe time to keep going</strong> is the deadline minus the work left, the planned waits and the time to roll back everything.</li>
+  <li><strong>Safe to keep going?</strong> turns to No once there is no longer time to roll back if something fails.</li>
+</ul>
+<h2>Gates</h2>
+<p>At the end of each stage, each team listed on <strong>Gates</strong> makes its <strong>Call</strong>: Go or No-go. The stage's <strong>Gate</strong> on the Stages tab shows Go once every listed team has said Go, and No-go if any has.</p>
+<h2>Roll back, don't rescue</h2>
+<p>If a stage gets a No-go, or a step fails and there is no safe fix, follow the step's <strong>Rollback steps</strong> and the <strong>Rollback plan</strong>. A rollback that was planned and practiced is safer than a fix invented at 2am.</p>
+<h2>After the run</h2>
+<p>Click <strong>Lock or unlock</strong> again to unlock, so teams can update the plan.</p>
+
+    <nav class="guide-nav" aria-label="Guides"><p><a href="smoke-tests-and-sign-off.html">Previous: Smoke tests and sign-off</a></p><p><a href="after-the-deploy.html">Next: After the deploy</a></p></nav>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <p>Made by <a href="https://salesforcegirl.org">salesforcegirl</a>, who also makes <a href="https://saasylogs.com">Saasy Logs</a>. © 2026</p>
+    <ul>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+      <li><a href="/legal.html">Legal</a></li>
+      <li><a href="mailto:support@deploylogs.com">support@deploylogs.com</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy · DeployLogs</title>
+<meta name="description" content="What DeployLogs asks Google for, what it keeps, and how to delete it.">
+<link rel="canonical" href="https://deploylogs.com/privacy.html">
+<meta name="theme-color" content="#fbf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16131a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deploylogs.com/privacy.html">
+<meta property="og:site_name" content="DeployLogs">
+<meta property="og:title" content="Privacy policy · DeployLogs">
+<meta property="og:description" content="What DeployLogs asks Google for, what it keeps, and how to delete it.">
+<meta property="og:image" content="https://deploylogs.com/og-image.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An orange rubber duck beside the words DeployLogs, Rubber duck deploys">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deploylogs.com/og-image.png?v=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
+<link rel="icon" href="/favicon.ico?v=1" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="/styles.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-bar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/brand/logo.svg" alt="" width="36" height="36"><span>DeployLogs</span></a>
+    <nav class="site-nav" aria-label="Site">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/examples.html">Examples</a></li>
+        <li><a href="/guides/">Guides</a></li>
+        <li><a href="/privacy.html" aria-current="page">Privacy</a></li>
+        <li><a href="/legal.html">Legal</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wrap legal">
+    <h1>Privacy policy</h1>
+    <p class="updated">Last updated 18 October 2026</p>
+
+    <h2>Where your tracker lives</h2>
+    <p>
+      DeployLogs runs in Google Apps Script, inside the spreadsheet you open it
+      in. Everything it builds and everything you type goes into that
+      spreadsheet. Your Google account and the spreadsheet's sharing settings
+      decide who can see it. DeployLogs has no server or database of its own.
+    </p>
+
+    <h2>What it asks Google for, and why</h2>
+    <ul>
+      <li><strong>See, edit, create and delete this spreadsheet.</strong> To build the tracker's tabs and keep them up to date. This covers only the spreadsheet you open DeployLogs in.</li>
+      <li><strong>Show menus and dialogs in Google Sheets.</strong> For the Extensions menu and the build, lock and close-out dialogs.</li>
+      <li><strong>See your email address.</strong> To show who locked the tracker, who turned on the audit log and who closed out the deploy. It is written into the spreadsheet's Overview tab.</li>
+      <li><strong>Run when the spreadsheet is edited.</strong> Only after you choose Turn on the audit log, to add each edit to the Audit log tab.</li>
+    </ul>
+
+    <h2>What the audit log records</h2>
+    <p>
+      For each edit: the time, the editor's email address when Google provides
+      it, the tab, the row, the field, and the old and new values. It is stored
+      on the Audit log tab of your spreadsheet.
+    </p>
+
+    <h2>What else it keeps</h2>
+    <p>
+      While a tracker is being built, a short marker is kept with the
+      spreadsheet so two builds cannot run at once. It is removed when the
+      build finishes. Google Apps Script keeps a log of the names of build
+      steps, how long they took, and any error messages, which the developer
+      can read to fix problems. That log does not include what you typed into
+      the tracker.
+    </p>
+
+    <h2>Sharing</h2>
+    <p>
+      DeployLogs shares your data with no one. DeployLogs' use and transfer of
+      information received from Google APIs adheres to the
+      <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
+      including the Limited Use requirements.
+    </p>
+
+    <h2>How long it is kept, and how to delete it</h2>
+    <p>
+      Your tracker stays until you delete its tabs or the spreadsheet. To stop
+      DeployLogs from running, including the audit log, remove its access at
+      <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.
+    </p>
+
+    <h2>This website</h2>
+    <p>deploylogs.com is a set of static pages on GitHub Pages. It sets no cookies and runs no analytics.</p>
+
+    <h2>Questions</h2>
+    <p>Email <a href="mailto:support@deploylogs.com">support@deploylogs.com</a>.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <p>Made by <a href="https://salesforcegirl.org">salesforcegirl</a>, who also makes <a href="https://saasylogs.com">Saasy Logs</a>. © 2026</p>
+    <ul>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+      <li><a href="/legal.html">Legal</a></li>
+      <li><a href="mailto:support@deploylogs.com">support@deploylogs.com</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

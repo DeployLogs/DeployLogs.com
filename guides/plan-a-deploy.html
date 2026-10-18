@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan a deploy · DeployLogs</title>
+<meta name="description" content="Set up the deploy: the changes, teams, stages, steps and gates.">
+<link rel="canonical" href="https://deploylogs.com/guides/plan-a-deploy.html">
+<meta name="theme-color" content="#fbf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16131a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deploylogs.com/guides/plan-a-deploy.html">
+<meta property="og:site_name" content="DeployLogs">
+<meta property="og:title" content="Plan a deploy · DeployLogs">
+<meta property="og:description" content="Set up the deploy: the changes, teams, stages, steps and gates.">
+<meta property="og:image" content="https://deploylogs.com/og-image.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An orange rubber duck beside the words DeployLogs, Rubber duck deploys">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deploylogs.com/og-image.png?v=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
+<link rel="icon" href="/favicon.ico?v=1" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="/styles.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-bar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/brand/logo.svg" alt="" width="36" height="36"><span>DeployLogs</span></a>
+    <nav class="site-nav" aria-label="Site">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/examples.html">Examples</a></li>
+        <li><a href="/guides/" aria-current="page">Guides</a></li>
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/legal.html">Legal</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <article class="wrap legal guide">
+    <p class="crumb"><a href="/guides/">Guides</a></p>
+    <h1>Plan a deploy</h1>
+    <p class="section-lede">Set up the deploy: the changes, teams, stages, steps and gates.</p>
+
+<p>Do this weeks before the deploy, with every team. Each team fills in its own steps.</p>
+<h2>1. Overview</h2>
+<p>Fill in <strong>Deploy name</strong>, <strong>Planned start</strong> and <strong>Must be finished by</strong>.</p>
+<h2>2. Changes</h2>
+<p>One row per change: a feature, a fix, a data model change. Give each an <strong>ID</strong> such as F-01, and a <strong>Business owner</strong>. Steps, smoke tests and data migration rows point at a change by its ID.</p>
+<h2>3. Teams</h2>
+<p>One row per team taking part, including a team that has not said what it needs to do yet. A team with no steps shows <span class="chip bad">No steps listed</span>.</p>
+<h2>4. Stages</h2>
+<p>List the stages in <strong>Order</strong>: for example Pre-deploy, Deploy, Data migration, Post-deploy checks, Business testing.</p>
+<ul>
+  <li><strong>Planned wait after (hrs)</strong>: time after the stage that is not work, such as overnight or waiting for testers.</li>
+  <li><strong>Point of no return</strong>: tick it when rolling back gets much harder once the stage is done.</li>
+  <li><strong>What must be true to go on</strong>: what the gate checks.</li>
+</ul>
+<h2>5. Steps</h2>
+<p>Every team adds its steps to the one <strong>Steps</strong> tab. For each step: <strong>ID</strong>, <strong>Run order</strong>, <strong>Stage</strong>, <strong>Team</strong>, <strong>Change (ID)</strong>, <strong>Step</strong>, <strong>How to do it</strong>, <strong>Owner</strong> and <strong>Backup owner</strong>.</p>
+<p>Then the estimate, the waits and handoffs, and the rollback. Each has its own guide: <a href="estimates.html">Estimates and practice runs</a>, <a href="order-and-handoffs.html">Order, waits and handoffs</a>.</p>
+<h2>6. Rollback for every step</h2>
+<p>Fill in <strong>Rollback steps</strong> and <strong>Rollback hours</strong>. A step without them makes its team <span class="chip bad">Not ready</span>, and its time is missing from "Hours to roll back everything".</p>
+<h2>7. Gates</h2>
+<p>On the <strong>Gates</strong> tab, add one row for every team that must say Go at the end of each stage: <strong>After stage</strong> and <strong>Team</strong>. On the day, each team fills in <strong>Call</strong>.</p>
+<h2>8. People and the rollback plan</h2>
+<p>List who is on the deploy and when they are available on <strong>People</strong>. On <strong>Rollback plan</strong>, write what counts as P0 to P3 for each system, what you do, and who decides.</p>
+
+    <nav class="guide-nav" aria-label="Guides"><p><a href="getting-started.html">Previous: Getting started</a></p><p><a href="estimates.html">Next: Estimates and practice runs</a></p></nav>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <p>Made by <a href="https://salesforcegirl.org">salesforcegirl</a>, who also makes <a href="https://saasylogs.com">Saasy Logs</a>. © 2026</p>
+    <ul>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+      <li><a href="/legal.html">Legal</a></li>
+      <li><a href="mailto:support@deploylogs.com">support@deploylogs.com</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

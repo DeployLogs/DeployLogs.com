@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smoke tests and sign-off · DeployLogs</title>
+<meta name="description" content="Check each change works, and have the business sign off the result.">
+<link rel="canonical" href="https://deploylogs.com/guides/smoke-tests-and-sign-off.html">
+<meta name="theme-color" content="#fbf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16131a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://deploylogs.com/guides/smoke-tests-and-sign-off.html">
+<meta property="og:site_name" content="DeployLogs">
+<meta property="og:title" content="Smoke tests and sign-off · DeployLogs">
+<meta property="og:description" content="Check each change works, and have the business sign off the result.">
+<meta property="og:image" content="https://deploylogs.com/og-image.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An orange rubber duck beside the words DeployLogs, Rubber duck deploys">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deploylogs.com/og-image.png?v=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
+<link rel="icon" href="/favicon.ico?v=1" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1">
+<link rel="stylesheet" href="/styles.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-bar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/brand/logo.svg" alt="" width="36" height="36"><span>DeployLogs</span></a>
+    <nav class="site-nav" aria-label="Site">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/examples.html">Examples</a></li>
+        <li><a href="/guides/" aria-current="page">Guides</a></li>
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/legal.html">Legal</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <article class="wrap legal guide">
+    <p class="crumb"><a href="/guides/">Guides</a></p>
+    <h1>Smoke tests and sign-off</h1>
+    <p class="section-lede">Check each change works, and have the business sign off the result.</p>
+
+<h2>Write the tests before the day</h2>
+<p>On <strong>Smoke tests</strong>, one row per check: <strong>ID</strong>, <strong>Stage</strong>, <strong>Change (ID)</strong>, <strong>What we are testing</strong>, <strong>Steps to run</strong>, <strong>Expected result</strong>, <strong>Test data or record</strong> and <strong>Tester</strong>.</p>
+<p>Agree up front who signs off each test, and put that person in <strong>Business sign-off by</strong>. A test with nobody named shows <span class="chip bad">No one accountable</span>.</p>
+<h2>On the day</h2>
+<ol>
+  <li>The tester sets <strong>Result</strong> to Passed or Failed. <strong>Run at</strong> fills in.</li>
+  <li>The business owner sets <strong>Business sign-off</strong> to Approved or Not approved. <strong>Signed off at</strong> fills in.</li>
+</ol>
+<p><strong>Sign-off check</strong> shows where each test is: Not run yet, Failed, Waiting for sign-off, Not approved, <span class="chip good">Signed off</span>, or <span class="chip bad">Approved without a pass</span>.</p>
+<h2>Every change covered</h2>
+<p>The <strong>Changes</strong> tab shows <strong>Covered?</strong> for each change: No steps, No smoke test, Rollback missing, Not signed off yet, or Signed off.</p>
+<h2>Data migration</h2>
+<p>For each set of records being moved, fill in <strong>Records before</strong>, <strong>Records expected after</strong> and, on the day, <strong>Records loaded</strong> and <strong>Records failed</strong>. <strong>Match</strong> says Matches, Does not match, Not loaded, or No expected count. Write how old records map to the new model in <strong>Mapping and rules</strong>.</p>
+
+    <nav class="guide-nav" aria-label="Guides"><p><a href="order-and-handoffs.html">Previous: Order, waits and handoffs</a></p><p><a href="run-the-deploy.html">Next: Run the deploy</a></p></nav>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <p>Made by <a href="https://salesforcegirl.org">salesforcegirl</a>, who also makes <a href="https://saasylogs.com">Saasy Logs</a>. © 2026</p>
+    <ul>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+      <li><a href="/legal.html">Legal</a></li>
+      <li><a href="mailto:support@deploylogs.com">support@deploylogs.com</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
