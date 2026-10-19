@@ -1,0 +1,51 @@
+# Publishes deploylogs.com with GitHub Actions instead of the built-in Pages
+# builder.
+#
+# Why (decided 19 Oct): the built-in builder runs Jekyll, which published this
+# repo's notes file as deploylogs.com/CLAUDE.html (and the raw /CLAUDE.md),
+# and a Jekyll build failed outright during a GitHub incident. The site is
+# plain HTML; it needs no build step. This copies only the files the site
+# serves into the published bundle. Anything else in the repo (notes,
+# .gitignore, this workflow) is never published.
+#
+# Adding a new kind of file to the site? Add it to the list below, or it will
+# not appear on deploylogs.com.
+
+name: Publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Collect the site's files
+        run: |
+          mkdir _site
+          cp *.html styles.css favicon.ico favicon.svg apple-touch-icon.png og-image.png CNAME _site/
+          cp -R guides brand _site/
+          echo "Published files:"; find _site -type f | sort
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

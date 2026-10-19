@@ -12,8 +12,12 @@ the made-up sample deploy from `App/Sample.gs`.
 
 ## How it's built
 
-- Plain HTML and one `styles.css`, served by GitHub Pages from `main`. No build
-  step. Merging to `main` is publishing.
+- Plain HTML and one `styles.css`. Merging to `main` is publishing:
+  `.github/workflows/pages.yml` copies **only the site's files** into the
+  published bundle and deploys it with GitHub Actions. Decided 19 Oct, after
+  the built-in Jekyll builder published this file as /CLAUDE.html and stalled
+  during a GitHub incident. **A new kind of file (a new folder, a font) must
+  be added to the workflow's copy list**, or it will not appear on the site.
 - **Nothing inline.** No `style=` attributes and no `<style>` blocks; the logo
   is `brand/logo.svg`, not SVG pasted into a page. Decided 18 Oct.
 - **Every page carries its own copy of the top bar and footer.** Changing the
