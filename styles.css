@@ -203,8 +203,10 @@ p { margin: 0 0 1rem; }
 
 /* ------------------------------------------------------------- sections --- */
 
-main section { padding: 2.5rem 1rem; }
-main section.wrap { padding-left: 1rem; padding-right: 1rem; }
+/* Space above and below every section. This has to name .wrap: the first
+   version said "main section", and .wrap's own "padding: 0 1rem" outranked
+   it, so every section had no space above its heading (spotted 18 Oct). */
+main section.wrap { padding-top: 2.5rem; padding-bottom: 2.5rem; }
 
 .section-lede { color: var(--muted); max-width: 44rem; }
 
@@ -266,45 +268,79 @@ main section.wrap { padding-left: 1rem; padding-right: 1rem; }
 /* Example tables scroll sideways inside their own box, never the page. */
 .sheet {
   overflow-x: auto;
-  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-top: 1rem;
+  border-radius: 0.5rem;
+  background: #ffffff;
 }
 
-.sheet table {
+.sheet-figure { margin: 1rem 0 0; }
+.sheet-figure figcaption { color: var(--muted); font-size: 0.875rem; margin-bottom: 0.35rem; }
+
+/* .gs: drawn to look like the sheet DeployLogs builds, not like the site.
+   Decided 18 Oct: Saasy Logs' site once looked better than its sheet and
+   had to be trued up, because that reads as false advertising. So: Arial,
+   gridlines, Sheets' grey column letters and row numbers, and the exact
+   colours Main.gs uses (DT_HEADER_INPUT, DT_HEADER_COMPUTED, DT_TONES).
+   It stays light in dark mode, because the spreadsheet does. If Main.gs
+   changes a colour, change it here too. */
+.gs {
   border-collapse: collapse;
   width: 100%;
-  min-width: 36rem;
-  font-size: 0.9375rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: #000000;
+  background: #ffffff;
 }
-.sheet th, .sheet td {
+.gs.wide { min-width: 54rem; }
+.gs th, .gs td {
+  border: 1px solid #e2e3e3;
+  padding: 0.25rem 0.4rem;
   text-align: left;
   vertical-align: top;
-  padding: 0.55rem 0.8rem;
-  border-bottom: 1px solid var(--border);
 }
-.sheet thead th { background: var(--surface-2); font-size: 0.875rem; }
-.sheet thead th.worked-out { background: var(--warn-bg); color: var(--warn-fg); }
-.sheet tbody th { font-weight: 600; white-space: nowrap; }
-.sheet .section-row th { background: var(--surface-2); color: var(--muted); font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.04em; }
-.sheet .num { text-align: right; font-variant-numeric: tabular-nums; }
-.sheet tr:last-child th, .sheet tr:last-child td { border-bottom: 0; }
+.gs .corner, .gs .col, .gs .rownum {
+  background: #f8f9fa;
+  color: #5f6368;
+  font-weight: 400;
+  font-size: 0.75rem;
+  text-align: center;
+}
+.gs .rownum { width: 2.25rem; }
+.gs .hd { font-weight: 700; }
+.gs .hd.in   { background: #EADFD3; }
+.gs .hd.calc { background: #F9D3AE; }
+.gs .num { text-align: right; }
+/* IDs fit their 60px column in the sheet; here the table would squeeze them. */
+.gs tbody td:first-of-type { white-space: nowrap; }
+.gs td.good { background: #D9EAD3; color: #1E4620; }
+.gs td.warn { background: #FCE8B2; color: #5C4000; }
+.gs td.bad  { background: #F4C7C3; color: #7A1E14; }
+.gs td.section { background: #EADFD3; font-weight: 700; }
+.gs .title { font-size: 1.125rem; font-weight: 700; }
+.gs .bold { font-weight: 700; }
+.gs .origin { color: #444746; }
+.gs.overview td:nth-child(2) { min-width: 9rem; }
 
 .legend { color: var(--muted); font-size: 0.875rem; margin-top: 0.5rem; }
 
-/* A mock of the build dialog. */
-.dialog {
+/* The build dialog as Main.gs draws it: Arial, the dialog's own colours. */
+.gs-dialog {
   max-width: 28rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
   margin-top: 1rem;
+  padding: 1.25rem;
+  background: #ffffff;
+  color: #231e27;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.45;
 }
-.dialog h3 { margin-bottom: 0.75rem; }
-.dialog progress { width: 100%; height: 0.75rem; accent-color: var(--accent); }
-.dialog .tick { color: var(--muted); font-variant-numeric: tabular-nums; }
+.gs-dialog p { margin: 0 0 0.75rem; }
+.gs-dialog p:last-child { margin-bottom: 0; }
+.gs-dialog-title { font-family: system-ui, sans-serif; font-size: 1.375rem; }
+.gs-dialog progress { width: 100%; height: 1rem; accent-color: #b45309; margin-bottom: 0.5rem; }
 
 /* ------------------------------------------------------------ examples --- */
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Examples · DeployLogs</title>
-<meta name="description" content="What DeployLogs looks like: the runlist, estimates, the overview, changes, smoke tests, data migration, teams and the audit log.">
+<meta name="description" content="Parts of the tabs DeployLogs builds, filled in with its sample deploy.">
 <link rel="canonical" href="https://deploylogs.com/examples.html">
 <meta name="theme-color" content="#fbf7f2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16131a" media="(prefers-color-scheme: dark)">
@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://deploylogs.com/examples.html">
 <meta property="og:site_name" content="DeployLogs">
 <meta property="og:title" content="Examples · DeployLogs">
-<meta property="og:description" content="What DeployLogs looks like: the runlist, estimates, the overview, changes, smoke tests, data migration, teams and the audit log.">
+<meta property="og:description" content="Parts of the tabs DeployLogs builds, filled in with its sample deploy.">
 <meta property="og:image" content="https://deploylogs.com/og-image.png?v=1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,7 +22,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
 <link rel="icon" href="/favicon.ico?v=1" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1">
-<link rel="stylesheet" href="/styles.css?v=1">
+<link rel="stylesheet" href="/styles.css?v=6">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -46,9 +46,10 @@
   <section class="wrap">
     <h1>Examples</h1>
     <p class="section-lede">
-      Every example comes from the sample deploy that DeployLogs can fill in for
-      you: a made-up weekend cutover of a billing system across five teams.
-      Columns with an orange heading are worked out for you.
+      These are parts of the tabs DeployLogs builds, filled in with its sample
+      deploy: a made-up weekend cutover of a billing system across five teams.
+      Column letters and row numbers are the ones in the sheet. Headings in
+      orange are worked out for you; headings in beige are where you type.
     </p>
     <ul class="toc">
       <li><a href="#runlist">The runlist</a></li>
@@ -58,7 +59,7 @@
       <li><a href="#smoke-tests">Smoke tests</a></li>
       <li><a href="#data">Data migration</a></li>
       <li><a href="#teams">Teams</a></li>
-      <li><a href="#lock">Lock and audit log</a></li>
+      <li><a href="#lock">Audit log</a></li>
       <li><a href="#build">Building a tracker</a></li>
     </ul>
   </section>
@@ -66,139 +67,171 @@
   <section class="wrap example" aria-labelledby="runlist">
     <h2 id="runlist">The runlist</h2>
     <p class="section-lede">Steps from every team, in run order. Each step says what it waits for and what it hands over.</p>
-    <div class="sheet" role="region" aria-label="Steps example" tabindex="0">
-      <table>
-        <thead><tr><th scope="col">ID</th><th scope="col">Run order</th><th scope="col">Team</th><th scope="col">Step</th><th scope="col">Waits for</th><th scope="col" class="worked-out">Can start?</th><th scope="col">Hands over</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">D-03</th><td class="num">8</td><td>Billing</td><td>Turn on the new billing feature</td><td></td><td><span class="chip good">Ready</span></td><td></td></tr>
-          <tr><th scope="row">D-04</th><td class="num">9</td><td>Billing</td><td>Deploy invoice and credit memo templates</td><td>D-03</td><td><span class="chip warn">Waiting on D-03 (Billing)</span></td><td>Template IDs, for the integration release</td></tr>
-          <tr><th scope="row">D-05</th><td class="num">10</td><td>Integration</td><td>Deploy the integration release</td><td>D-01, D-04</td><td><span class="chip warn">Waiting on D-01 (CRM), D-04 (Billing)</span></td><td></td></tr>
-          <tr><th scope="row">C-01</th><td class="num">15</td><td>Integration</td><td>Resume order sync and watch the first orders</td><td>M-03</td><td><span class="chip warn">Waiting on M-03 (ERP)</span></td><td></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="legend">On D-05, "Received from earlier steps" reads: D-04: Template IDs, for the integration release (not handed over yet). Once Billing fills in the value, it shows there instead.</p>
+    <figure class="sheet-figure">
+      <figcaption>Steps</figcaption>
+      <div class="sheet" role="region" aria-label="Steps" tabindex="0">
+        <table class="gs wide">
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">D</th><th scope="col" class="col">F</th><th scope="col" class="col">J</th><th scope="col" class="col">K</th><th scope="col" class="col">L</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in num">Run order</th><th scope="col" class="hd in">Team</th><th scope="col" class="hd in">Step</th><th scope="col" class="hd in">Waits for (IDs)</th><th scope="col" class="hd calc">Can start?</th><th scope="col" class="hd in">Hands over</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="rownum">9</th><td>D-03</td><td class="num">8</td><td>Billing</td><td>Turn on the new billing feature</td><td></td><td class="good">Ready</td><td></td></tr>
+            <tr><th scope="row" class="rownum">10</th><td>D-04</td><td class="num">9</td><td>Billing</td><td>Deploy invoice and credit memo templates</td><td>D-03</td><td class="warn">Waiting on D-03 (Billing)</td><td>Invoice and credit memo template IDs, for the integration release</td></tr>
+            <tr><th scope="row" class="rownum">11</th><td>D-05</td><td class="num">10</td><td>Integration</td><td>Deploy the integration release</td><td>D-01, D-04</td><td class="warn">Waiting on D-01 (CRM), D-04 (Billing)</td><td></td></tr>
+            <tr><th scope="row" class="rownum">16</th><td>C-01</td><td class="num">15</td><td>Integration</td><td>Resume order sync and watch the first orders</td><td>M-03</td><td class="warn">Waiting on M-03 (ERP)</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </figure>
+    <p class="legend">Before the deploy starts. On D-05, "Received from earlier steps" reads: D-04: Invoice and credit memo template IDs, for the integration release (not handed over yet).</p>
   </section>
 
   <section class="wrap example" aria-labelledby="estimates">
     <h2 id="estimates">Estimates</h2>
     <p class="section-lede">Plan hours use the longest practice run, times the data size factor. With no practice run, they use the owner's estimate.</p>
-    <div class="sheet" role="region" aria-label="Estimates example" tabindex="0">
-      <table>
-        <thead><tr><th scope="col">ID</th><th scope="col">Step</th><th scope="col">Owner estimate</th><th scope="col">Practice runs</th><th scope="col">Data size factor</th><th scope="col" class="worked-out">Plan hours</th><th scope="col" class="worked-out">Estimate source</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">M-01</th><td>Run the account migration</td><td class="num">3</td><td class="num">3, 2.5</td><td class="num">1.4</td><td class="num">4.2</td><td><span class="chip good">Practiced</span></td></tr>
-          <tr><th scope="row">M-02</th><td>Migrate billing accounts</td><td class="num">4</td><td></td><td></td><td class="num">4</td><td><span class="chip warn">Owner's guess</span></td></tr>
-          <tr><th scope="row">M-03</th><td>Load customer records</td><td></td><td></td><td></td><td></td><td><span class="chip bad">Missing</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <figure class="sheet-figure">
+      <figcaption>Steps</figcaption>
+      <div class="sheet" role="region" aria-label="Steps" tabindex="0">
+        <table class="gs wide">
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">F</th><th scope="col" class="col">O</th><th scope="col" class="col">P</th><th scope="col" class="col">Q</th><th scope="col" class="col">S</th><th scope="col" class="col">T</th><th scope="col" class="col">U</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">Step</th><th scope="col" class="hd in num">Owner estimate (hrs)</th><th scope="col" class="hd in num">Practice run 1 (hrs)</th><th scope="col" class="hd in num">Practice run 2 (hrs)</th><th scope="col" class="hd in num">Data size factor</th><th scope="col" class="hd calc num">Plan hours</th><th scope="col" class="hd calc">Estimate source</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="rownum">13</th><td>M-01</td><td>Run the account migration</td><td class="num">3.0</td><td class="num">3.0</td><td class="num">2.5</td><td class="num">1.4</td><td class="num">4.2</td><td class="good">Practiced</td></tr>
+            <tr><th scope="row" class="rownum">14</th><td>M-02</td><td>Migrate billing accounts</td><td class="num">4.0</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num">4.0</td><td class="warn">Owner&#x27;s guess</td></tr>
+            <tr><th scope="row" class="rownum">15</th><td>M-03</td><td>Load customer records</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="bad">Missing</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </figure>
   </section>
 
   <section class="wrap example" aria-labelledby="overview">
     <h2 id="overview">The overview</h2>
-    <p class="section-lede">Every number says where it comes from.</p>
-    <div class="sheet" role="region" aria-label="Overview example" tabindex="0">
-      <table>
-        <thead><tr><th scope="col">Row</th><th scope="col" class="worked-out">Value</th><th scope="col">Where this comes from</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Steps left</th><td class="num">19</td><td>Steps that are not Done or Skipped</td></tr>
-          <tr><th scope="row">Projected finish</th><td>Sun 25 Oct, 12:12 am</td><td>Now or the planned start, plus plan hours and planned waits left</td></tr>
-          <tr><th scope="row">On track?</th><td><span class="chip good">Yes, 29.8 hrs to spare</span></td><td>Projected finish compared with the deadline</td></tr>
-          <tr><th scope="row">Hours to roll back everything</th><td class="num">13</td><td>Rollback hours of every step except Skipped ones</td></tr>
-          <tr><th scope="row">Latest safe time to keep going</th><td>Sat 24 Oct, 7:48 am</td><td>Deadline minus plan hours left, planned waits left and the time to roll back everything</td></tr>
-          <tr><th scope="row">Plan hours backed by a practice run</th><td class="num">44%</td><td>Plan hours of Practiced steps, out of all plan hours</td></tr>
-          <tr><th scope="row">Teams not ready</th><td><span class="chip bad">2</span></td><td>Teams whose Ready? is Not ready or No steps listed</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <p class="section-lede">Every number says where it comes from. Some rows are left out here.</p>
+    <figure class="sheet-figure">
+      <figcaption>Overview</figcaption>
+      <div class="sheet" role="region" aria-label="Overview" tabindex="0">
+        <table class="gs overview">
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">C</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="rownum">1</th><td class="title">Deploy overview</td><td></td><td class="bold">Where this comes from</td></tr>
+            <tr><th scope="row" class="rownum">7</th><td class="section">Where we are</td><td class="section"></td><td class="section"></td></tr>
+            <tr><th scope="row" class="rownum">9</th><td>Steps left</td><td>19</td><td class="origin">Steps that are not Done or Skipped.</td></tr>
+            <tr><th scope="row" class="rownum">16</th><td>Projected finish</td><td>Sun 25 Oct, 12:12 am</td><td class="origin">Now (or the planned start, if that is later) plus plan hours left and planned waits left. Assumes steps run one after another.</td></tr>
+            <tr><th scope="row" class="rownum">17</th><td>On track?</td><td class="good">Yes, 29.8 hrs to spare</td><td class="origin">Projected finish compared with the deadline.</td></tr>
+            <tr><th scope="row" class="rownum">35</th><td class="section">If something goes wrong</td><td class="section"></td><td class="section"></td></tr>
+            <tr><th scope="row" class="rownum">36</th><td>Hours to roll back everything</td><td>13.0</td><td class="origin">Rollback hours of every step except Skipped ones.</td></tr>
+            <tr><th scope="row" class="rownum">39</th><td>Latest safe time to keep going</td><td>Sat 24 Oct, 7:48 am</td><td class="origin">Deadline minus plan hours left, planned waits left and the time to roll back everything.</td></tr>
+            <tr><th scope="row" class="rownum">41</th><td class="section">How solid is the plan</td><td class="section"></td><td class="section"></td></tr>
+            <tr><th scope="row" class="rownum">42</th><td>Plan hours backed by a practice run</td><td>44%</td><td class="origin">Plan hours of Practiced steps, out of all plan hours.</td></tr>
+            <tr><th scope="row" class="rownum">44</th><td>Steps with no estimate</td><td class="bad">2</td><td class="origin">Steps whose estimate source is Missing.</td></tr>
+            <tr><th scope="row" class="rownum">47</th><td>Teams not ready</td><td class="bad">2</td><td class="origin">Teams whose &quot;Ready?&quot; on the Teams tab is Not ready or No steps listed.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </figure>
   </section>
 
   <section class="wrap example" aria-labelledby="changes">
     <h2 id="changes">Changes</h2>
     <p class="section-lede">Each change in the deploy, and whether it is covered.</p>
-    <div class="sheet" role="region" aria-label="Changes example" tabindex="0">
-      <table>
-        <thead><tr><th scope="col">ID</th><th scope="col">Change</th><th scope="col" class="worked-out">Steps</th><th scope="col" class="worked-out">Smoke tests</th><th scope="col" class="worked-out">Covered?</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">F-01</th><td>New billing feature</td><td class="num">2</td><td class="num">1</td><td><span class="chip bad">Rollback missing</span></td></tr>
-          <tr><th scope="row">F-02</th><td>New invoice and credit memo templates</td><td class="num">1</td><td class="num">1</td><td><span class="chip warn">Not signed off yet</span></td></tr>
-          <tr><th scope="row">F-06</th><td>Customer records flow to ERP</td><td class="num">2</td><td class="num">0</td><td><span class="chip bad">No smoke test</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <figure class="sheet-figure">
+      <figcaption>Changes</figcaption>
+      <div class="sheet" role="region" aria-label="Changes" tabindex="0">
+        <table class="gs wide">
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">F</th><th scope="col" class="col">I</th><th scope="col" class="col">K</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">Change</th><th scope="col" class="hd calc num">Steps</th><th scope="col" class="hd calc num">Smoke tests</th><th scope="col" class="hd calc">Covered?</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="rownum">2</th><td>F-01</td><td>New billing feature: billing attributes on accounts</td><td class="num">2</td><td class="num">1</td><td class="bad">Rollback missing</td></tr>
+            <tr><th scope="row" class="rownum">3</th><td>F-02</td><td>New invoice and credit memo templates</td><td class="num">1</td><td class="num">1</td><td class="warn">Not signed off yet</td></tr>
+            <tr><th scope="row" class="rownum">7</th><td>F-06</td><td>Customer records flow to ERP</td><td class="num">2</td><td class="bad num">0</td><td class="bad">No smoke test</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </figure>
   </section>
 
   <section class="wrap example" aria-labelledby="smoke-tests">
     <h2 id="smoke-tests">Smoke tests</h2>
     <p class="section-lede">Every test names the person in the business who signs off the result.</p>
-    <div class="sheet" role="region" aria-label="Smoke tests example" tabindex="0">
-      <table>
-        <thead><tr><th scope="col">ID</th><th scope="col">What we are testing</th><th scope="col">Result</th><th scope="col">Business sign-off by</th><th scope="col">Business sign-off</th><th scope="col" class="worked-out">Sign-off check</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">T-01</th><td>A new order syncs to billing on the right billing account</td><td><span class="chip good">Passed</span></td><td>Morgan</td><td><span class="chip good">Approved</span></td><td><span class="chip good">Signed off</span></td></tr>
-          <tr><th scope="row">T-03</th><td>Invoice uses the new template</td><td><span class="chip good">Passed</span></td><td>Alex</td><td></td><td><span class="chip warn">Waiting for sign-off</span></td></tr>
-          <tr><th scope="row">T-05</th><td>Test bill run groups charges by billing attributes</td><td>Not run</td><td></td><td></td><td><span class="chip bad">No one accountable</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <figure class="sheet-figure">
+      <figcaption>Smoke tests</figcaption>
+      <div class="sheet" role="region" aria-label="Smoke tests" tabindex="0">
+        <table class="gs wide">
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">D</th><th scope="col" class="col">K</th><th scope="col" class="col">O</th><th scope="col" class="col">P</th><th scope="col" class="col">R</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">What we are testing</th><th scope="col" class="hd in">Result</th><th scope="col" class="hd in">Business sign-off by</th><th scope="col" class="hd in">Business sign-off</th><th scope="col" class="hd calc">Sign-off check</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="rownum">2</th><td>T-01</td><td>A new order syncs to billing on the right billing account</td><td class="good">Passed</td><td>Morgan</td><td class="good">Approved</td><td class="good">Signed off</td></tr>
+            <tr><th scope="row" class="rownum">4</th><td>T-03</td><td>Invoice uses the new template</td><td class="good">Passed</td><td>Alex</td><td></td><td class="warn">Waiting for sign-off</td></tr>
+            <tr><th scope="row" class="rownum">6</th><td>T-05</td><td>Test bill run groups charges by billing attributes</td><td>Not run</td><td></td><td></td><td class="bad">No one accountable</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </figure>
+    <p class="legend">Partway through business testing: T-01 and T-03 have been run. In the sample as filled in, every test starts as Not run.</p>
   </section>
 
   <section class="wrap example" aria-labelledby="data">
     <h2 id="data">Data migration</h2>
     <p class="section-lede">Record counts before, expected after, and loaded. Merging records can make the expected count lower.</p>
-    <div class="sheet" role="region" aria-label="Data migration example" tabindex="0">
-      <table>
-        <thead><tr><th scope="col">ID</th><th scope="col">What is moving</th><th scope="col">Records before</th><th scope="col">Records expected after</th><th scope="col">Records loaded</th><th scope="col" class="worked-out">Match</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">DM-01</th><td>Accounts</td><td class="num">12,480</td><td class="num">12,480</td><td class="num">12,480</td><td><span class="chip good">Matches</span></td></tr>
-          <tr><th scope="row">DM-02</th><td>Billing accounts</td><td class="num">9,310</td><td class="num">8,655</td><td class="num">8,642</td><td><span class="chip bad">Does not match</span></td></tr>
-          <tr><th scope="row">DM-03</th><td>Customer records to ERP</td><td></td><td></td><td></td><td><span class="chip bad">No expected count</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="legend">Loaded counts here are made up to show each result.</p>
+    <figure class="sheet-figure">
+      <figcaption>Data migration</figcaption>
+      <div class="sheet" role="region" aria-label="Data migration" tabindex="0">
+        <table class="gs wide">
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">I</th><th scope="col" class="col">J</th><th scope="col" class="col">L</th><th scope="col" class="col">O</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">What is moving</th><th scope="col" class="hd in num">Records before</th><th scope="col" class="hd in num">Records expected after</th><th scope="col" class="hd in num">Records loaded</th><th scope="col" class="hd calc">Match</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="rownum">2</th><td>DM-01</td><td>Accounts</td><td class="num">12,480</td><td class="num">12,480</td><td class="num">12,480</td><td class="good">Matches</td></tr>
+            <tr><th scope="row" class="rownum">3</th><td>DM-02</td><td>Billing accounts</td><td class="num">9,310</td><td class="num">8,655</td><td class="num">8,642</td><td class="bad">Does not match</td></tr>
+            <tr><th scope="row" class="rownum">4</th><td>DM-03</td><td>Customer records to ERP</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="bad">No expected count</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </figure>
+    <p class="legend">The loaded counts are made up to show each result. The sample leaves them blank until the migration runs.</p>
   </section>
 
   <section class="wrap example" aria-labelledby="teams">
     <h2 id="teams">Teams</h2>
-    <p class="section-lede">Every team is held to the same rule. A team that has not added its steps shows that too.</p>
-    <div class="sheet" role="region" aria-label="Teams example" tabindex="0">
-      <table>
-        <thead><tr><th scope="col">Team</th><th scope="col" class="worked-out">Steps</th><th scope="col" class="worked-out">Practiced</th><th scope="col" class="worked-out">Ready?</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">CRM</th><td class="num">7</td><td class="num">100%</td><td><span class="chip good">Ready</span></td></tr>
-          <tr><th scope="row">Billing</th><td class="num">6</td><td class="num">0%</td><td><span class="chip bad">Not ready</span></td></tr>
-          <tr><th scope="row">Business</th><td class="num">1</td><td class="num">0%</td><td><span class="chip warn">Partly practiced</span></td></tr>
-          <tr><th scope="row">Finance</th><td class="num">0</td><td></td><td><span class="chip bad">No steps listed</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <p class="section-lede">Every team is held to the same rule. A team with no steps at all shows No steps listed.</p>
+    <figure class="sheet-figure">
+      <figcaption>Teams</figcaption>
+      <div class="sheet" role="region" aria-label="Teams" tabindex="0">
+        <table class="gs ">
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">E</th><th scope="col" class="col">F</th><th scope="col" class="col">N</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">Team</th><th scope="col" class="hd calc num">Steps</th><th scope="col" class="hd calc num">Practiced</th><th scope="col" class="hd calc">Ready?</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="rownum">2</th><td>CRM</td><td class="num">7</td><td class="num">100%</td><td class="good">Ready</td></tr>
+            <tr><th scope="row" class="rownum">3</th><td>Billing</td><td class="num">6</td><td class="warn num">0%</td><td class="bad">Not ready</td></tr>
+            <tr><th scope="row" class="rownum">4</th><td>Integration</td><td class="num">3</td><td class="num">100%</td><td class="good">Ready</td></tr>
+            <tr><th scope="row" class="rownum">5</th><td>ERP</td><td class="num">2</td><td class="num"></td><td class="bad">Not ready</td></tr>
+            <tr><th scope="row" class="rownum">6</th><td>Business</td><td class="num">1</td><td class="warn num">0%</td><td class="warn">Partly practiced</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </figure>
   </section>
 
   <section class="wrap example" aria-labelledby="lock">
-    <h2 id="lock">Lock and audit log</h2>
-    <p class="section-lede">During a run, only the person running it can edit. The audit log records every edit.</p>
-    <div class="sheet" role="region" aria-label="Audit log example" tabindex="0">
-      <table>
-        <thead><tr><th scope="col">When</th><th scope="col">Who</th><th scope="col">Tab</th><th scope="col">Row</th><th scope="col">Field</th><th scope="col">Old value</th><th scope="col">New value</th></tr></thead>
-        <tbody>
-          <tr><td>Fri 23 Oct, 6:02 pm</td><td>avery@example.com</td><td>Steps</td><td>D-01</td><td>Status</td><td>Not started</td><td>In progress</td></tr>
-          <tr><td>Fri 23 Oct, 7:41 pm</td><td>avery@example.com</td><td>Steps</td><td>D-04</td><td>Value handed over</td><td></td><td>INV-2207, CM-0419</td></tr>
-          <tr><td>Fri 23 Oct, 7:43 pm</td><td>avery@example.com</td><td>Gates</td><td>Row 5</td><td>Call</td><td></td><td>Go</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <h2 id="lock">Audit log</h2>
+    <p class="section-lede">During a run, only the person running it can edit, and the audit log records every edit.</p>
+    <figure class="sheet-figure">
+      <figcaption>Audit log</figcaption>
+      <div class="sheet" role="region" aria-label="Audit log" tabindex="0">
+        <table class="gs wide">
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">C</th><th scope="col" class="col">D</th><th scope="col" class="col">E</th><th scope="col" class="col">F</th><th scope="col" class="col">G</th><th scope="col" class="col">H</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">When</th><th scope="col" class="hd in">Who</th><th scope="col" class="hd in">Tab</th><th scope="col" class="hd in">Row</th><th scope="col" class="hd in">Field</th><th scope="col" class="hd in">Old value</th><th scope="col" class="hd in">New value</th><th scope="col" class="hd in">Note</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="rownum">2</th><td>Fri 23 Oct, 6:02 pm</td><td>avery@example.com</td><td>Steps</td><td>D-01</td><td>Status</td><td>Not started</td><td>In progress</td><td></td></tr>
+            <tr><th scope="row" class="rownum">3</th><td>Fri 23 Oct, 7:41 pm</td><td>avery@example.com</td><td>Steps</td><td>D-04</td><td>Value handed over</td><td></td><td>INV-2207, CM-0419</td><td></td></tr>
+            <tr><th scope="row" class="rownum">4</th><td>Fri 23 Oct, 7:43 pm</td><td>avery@example.com</td><td>Gates</td><td>Row 5</td><td>Call</td><td></td><td>Go</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </figure>
+    <p class="legend">These rows are made up to show what an entry looks like.</p>
   </section>
 
   <section class="wrap example" aria-labelledby="build">
     <h2 id="build">Building a tracker</h2>
     <p class="section-lede">Building takes about a minute. The dialog shows each step as it goes.</p>
-    <div class="dialog" role="img" aria-label="The build dialog at step 6 of 17, Laying out Steps, 23 seconds in">
-      <h3>Build a new tracker</h3>
+    <div class="gs-dialog" role="img" aria-label="The build dialog at step 6 of 17, Laying out Steps, 23 seconds in">
+      <p class="gs-dialog-title">Build a new tracker</p>
       <progress max="17" value="5"></progress>
-      <p>Step 6 of 17: Laying out Steps… <span class="tick">23s</span></p>
-      <p class="legend">This takes about a minute. Keep this window open until it finishes.</p>
+      <p>Step 6 of 17: Laying out Steps…  23s</p>
+      <p>This takes about a minute. Keep this window open until it finishes.</p>
     </div>
   </section>
 

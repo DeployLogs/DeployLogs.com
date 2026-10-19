@@ -24,6 +24,25 @@ the made-up sample deploy from `App/Sample.gs`.
 - Contrast for every colour pair is measured and written at the top of
   `styles.css`. Re-measure if a colour changes.
 
+## Examples look like the sheet
+
+The tables on `examples.html` are drawn to match the sheet DeployLogs builds:
+its headings, column letters and row numbers, number formats, header colours
+and whole-cell fills (`.gs` in `styles.css`, taken from `Main.gs`), and the
+sample deploy's exact values. Anything made up to show a state the sample
+does not have is labelled under the table. Decided 18 Oct: Saasy Logs' site
+once looked better than its sheet and had to be trued up, because that reads
+as false advertising. When the app's columns, colours or sample change, the
+examples change with them.
+
+## No cookies, so no cookie banner
+
+The site sets no cookies, runs no scripts and loads nothing from another
+company (checked 18 Oct, including the live response headers). That is why it
+needs no consent banner. Adding analytics, web fonts from a service, an embed
+or a chat widget changes that: decide it deliberately, and update the privacy
+policy at the same time.
+
 ## Voice
 
 - Plain words, standard labels. Readers are smart and literal.
