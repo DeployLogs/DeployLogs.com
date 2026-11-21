@@ -49,7 +49,7 @@
     <p class="section-lede">Check each change works, and have the business sign off the result.</p>
 
 <h2>Write the tests before the day</h2>
-<p>On <strong>Smoke tests</strong>, one row per check: <strong>ID</strong>, <strong>Stage</strong>, <strong>Change (ID)</strong>, <strong>What we are testing</strong>, <strong>Steps to run</strong>, <strong>Expected result</strong>, <strong>Test data or record</strong> and <strong>Tester</strong>.</p>
+<p>On <strong>Smoke tests</strong>, one row per check. The <strong>ID</strong> is set for you when you type the test. Fill in <strong>Stage</strong>, <strong>Change (ID)</strong>, <strong>What we are testing</strong>, <strong>Steps to run</strong>, <strong>Expected result</strong>, <strong>Test data or record</strong> and <strong>Tester</strong>.</p>
 <p>Agree up front who signs off each test, and put that person in <strong>Business sign-off by</strong>. A test with nobody named shows <span class="chip bad">No one accountable</span>.</p>
 <h2>On the day</h2>
 <ol>
@@ -59,8 +59,8 @@
 <p><strong>Sign-off check</strong> shows where each test is: Not run yet, Failed, Waiting for sign-off, Not approved, <span class="chip good">Signed off</span>, or <span class="chip bad">Approved without a pass</span>.</p>
 <h2>Every change covered</h2>
 <p>The <strong>Changes</strong> tab shows <strong>Covered?</strong> for each change: No steps, No smoke test, Rollback missing, Not signed off yet, or Signed off.</p>
-<h2>Data migration</h2>
-<p>For each set of records being moved, fill in <strong>Records before</strong>, <strong>Records expected after</strong> and, on the day, <strong>Records loaded</strong> and <strong>Records failed</strong>. <strong>Match</strong> says Matches, Does not match, Not loaded, or No expected count. Write how old records map to the new model in <strong>Mapping and rules</strong>.</p>
+<h2>Record counts</h2>
+<p>On the <strong>Record counts</strong> tab, for each set of records being moved, fill in <strong>Records before</strong>, <strong>Records expected after</strong> and, on the day, <strong>Records loaded</strong> and <strong>Records failed</strong>. <strong>Match</strong> says Matches, Does not match, Not loaded, or No expected count. Write how old records map to the new model in <strong>Mapping and rules</strong>.</p>
 
     <nav class="guide-nav" aria-label="Guides"><p><a href="order-and-handoffs.html">Previous: Order, waits and handoffs</a></p><p><a href="run-the-deploy.html">Next: Run the deploy</a></p></nav>
   </article>

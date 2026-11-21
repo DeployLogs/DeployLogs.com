@@ -55,13 +55,13 @@
   <li>In Google Sheets, open a new, blank spreadsheet.</li>
   <li>Choose <strong>Extensions &gt; DeployLogs &gt; Build a new tracker</strong>.</li>
   <li>The first time, Google asks you to allow DeployLogs. The <a href="/privacy.html">privacy policy</a> lists what it asks for and why.</li>
-  <li>A dialog shows each step of the build. It takes about a minute. Keep the dialog open until it says Done.</li>
+  <li>A dialog shows each step of the build. It takes a few minutes. Keep the dialog open until it says Done.</li>
 </ol>
 <h2>Try the sample</h2>
 <ol>
   <li>Choose <strong>Extensions &gt; DeployLogs &gt; Fill in a sample deploy</strong>.</li>
   <li>Open the <strong>Overview</strong> tab. Every number has a "Where this comes from" note beside it.</li>
-  <li>Open <strong>Teams</strong> to see which teams are ready, and <strong>Steps</strong> to see the runlist.</li>
+  <li>Open <strong>Teams</strong> to see which teams are ready, and <strong>Runlist</strong> to see every step in order.</li>
 </ol>
 <p>The sample only goes into an empty tracker. To start your real deploy, build a tracker in a new spreadsheet.</p>
 <h2>The tabs</h2>
@@ -70,9 +70,11 @@
   <li><strong>Overview</strong>: the deploy at a glance.</li>
   <li><strong>Changes</strong>: what the deploy changes.</li>
   <li><strong>Stages</strong>: the order of the deploy, with a gate at the end of each stage.</li>
-  <li><strong>Steps</strong>: the runlist.</li>
-  <li><strong>Data migration</strong>: records being moved, with counts.</li>
+  <li><strong>Pre-deploy</strong>, <strong>Deploy</strong>, <strong>Data migration</strong>, <strong>Post-deploy</strong>, <strong>Business testing</strong>: one tab per stage, where each team adds its steps.</li>
+  <li><strong>Runlist</strong>: every step of the deploy in order, worked out from the stage tabs.</li>
+  <li><strong>Record counts</strong>: records being moved, with counts.</li>
   <li><strong>Smoke tests</strong>: checks after the deploy, and who signs them off.</li>
+  <li><strong>Rollback</strong>: the rollback runlist, in order.</li>
   <li><strong>Gates</strong>: each team's Go or No-go.</li>
   <li><strong>Teams</strong>, <strong>People</strong>, <strong>Rollback plan</strong>, <strong>Issues</strong>, <strong>Audit log</strong>.</li>
 </ul>

@@ -49,21 +49,22 @@
     <p class="section-lede">Put every team's steps in one order, and pass IDs from one team to the next.</p>
 
 <h2>Run order</h2>
-<p>Give each step a <strong>Run order</strong>: 1, 2, 3, across every team. Sort the Steps tab by Run order to see the runlist.</p>
+<p>On each stage tab, the order of the rows is the order they run. Drag a row to move it, and do not sort the stage tabs.</p>
+<p>The <strong>Runlist</strong> tab gives every step a <strong>Run order</strong>: the stages in their order on the Stages tab, then the rows within each stage from top to bottom. Nothing is typed there.</p>
 <h2>Waits for</h2>
-<p>In <strong>Waits for (IDs)</strong>, list the steps that must be done first, separated by commas: <code>D-01, D-04</code>. Often it is another team's step.</p>
+<p>In <strong>Waits for (IDs)</strong>, list the steps that must be done first, separated by commas: <code>DEP-001, DEP-004</code>. Often it is another team's step.</p>
 <p><strong>Can start?</strong> then shows:</p>
 <ul>
   <li><span class="chip good">Ready</span> nothing left to wait for.</li>
-  <li><span class="chip warn">Waiting on D-04 (Billing)</span> the steps not yet Done or Skipped, and their team.</li>
-  <li><span class="chip bad">Check order: waits for a later step</span> the step waits for a step with a later run order. Fix the order.</li>
+  <li><span class="chip warn">Waiting on DEP-004 (Billing)</span> the steps not yet Done or Skipped, and their team.</li>
+  <li><span class="chip bad">Check order: waits for a later step</span> the step waits for a step with a later run order. Move one of them.</li>
 </ul>
 <p>If someone sets a waiting step to In progress, a "Still waiting" message names what it is waiting on.</p>
 <h2>Handoffs</h2>
 <ol>
   <li>On the step that creates something the next team needs, write what it is in <strong>Hands over</strong>: "Invoice template IDs, for the integration release".</li>
   <li>On the day, the owner puts the real value in <strong>Value handed over</strong>.</li>
-  <li>The waiting step shows it in <strong>Received from earlier steps</strong>: "D-04: Invoice template IDs = INV-2207". Until then it says "(not handed over yet)".</li>
+  <li>The waiting step shows it in <strong>Received from earlier steps</strong>: "DEP-004: Invoice template IDs = INV-2207". Until then it says "(not handed over yet)".</li>
 </ol>
 <p>Overview counts steps that are Done but handed nothing over.</p>
 

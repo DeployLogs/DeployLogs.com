@@ -52,21 +52,24 @@
 <h2>1. Overview</h2>
 <p>Fill in <strong>Deploy name</strong>, <strong>Planned start</strong> and <strong>Must be finished by</strong>.</p>
 <h2>2. Changes</h2>
-<p>One row per change: a feature, a fix, a data model change. Give each an <strong>ID</strong> such as F-01, and a <strong>Business owner</strong>. Steps, smoke tests and data migration rows point at a change by its ID.</p>
+<p>One row per change: a feature, a fix, a data model change. When you type its name, DeployLogs gives it an <strong>ID</strong> such as CHG-001. Fill in its <strong>Team</strong> and <strong>Business owner</strong>. Steps, smoke tests and record counts pick a change by its ID.</p>
 <h2>3. Teams</h2>
 <p>One row per team taking part, including a team that has not said what it needs to do yet. A team with no steps shows <span class="chip bad">No steps listed</span>.</p>
 <h2>4. Stages</h2>
-<p>List the stages in <strong>Order</strong>: for example Pre-deploy, Deploy, Data migration, Post-deploy checks, Business testing.</p>
+<p>Each stage has its own tab. A new tracker starts with Pre-deploy, Deploy, Data migration, Post-deploy and Business testing, in that <strong>Order</strong>. To add one, choose <strong>Extensions &gt; DeployLogs &gt; Add a stage</strong>.</p>
 <ul>
   <li><strong>Planned wait after (hrs)</strong>: time after the stage that is not work, such as overnight or waiting for testers.</li>
   <li><strong>Point of no return</strong>: tick it when rolling back gets much harder once the stage is done.</li>
   <li><strong>What must be true to go on</strong>: what the gate checks.</li>
 </ul>
 <h2>5. Steps</h2>
-<p>Every team adds its steps to the one <strong>Steps</strong> tab. For each step: <strong>ID</strong>, <strong>Run order</strong>, <strong>Stage</strong>, <strong>Team</strong>, <strong>Change (ID)</strong>, <strong>Step</strong>, <strong>How to do it</strong>, <strong>Owner</strong> and <strong>Backup owner</strong>.</p>
+<p>Each team adds its steps to the tab for that stage. For each step: <strong>Change (ID)</strong>, <strong>Team</strong>, <strong>Step</strong>, <strong>How to do it</strong>, <strong>Owner</strong> and <strong>Backup owner</strong>. The <strong>ID</strong> is set for you.</p>
+<p>When you pick a change, <strong>Team</strong> fills in from the Changes tab. Change it if another team does the step. Leave Change (ID) blank for general steps, like a backup.</p>
+<p>The order of the rows is the order they run: drag a row to move it, and do not sort the stage tabs. The <strong>Runlist</strong> tab shows every stage's steps in order.</p>
 <p>Then the estimate, the waits and handoffs, and the rollback. Each has its own guide: <a href="estimates.html">Estimates and practice runs</a>, <a href="order-and-handoffs.html">Order, waits and handoffs</a>.</p>
 <h2>6. Rollback for every step</h2>
-<p>Fill in <strong>Rollback steps</strong> and <strong>Rollback hours</strong>. A step without them makes its team <span class="chip bad">Not ready</span>, and its time is missing from "Hours to roll back everything".</p>
+<p>On each step, say how to undo it in <strong>Rollback steps</strong>. A step without one makes its team <span class="chip bad">Not ready</span>.</p>
+<p>Then write the rollback itself on the <strong>Rollback</strong> tab: its steps in the order they run, each with an owner and an estimate. A rollback is often not the deploy steps backwards. "Hours to roll back everything" on Overview adds up the Rollback tab.</p>
 <h2>7. Gates</h2>
 <p>On the <strong>Gates</strong> tab, add one row for every team that must say Go at the end of each stage: <strong>After stage</strong> and <strong>Team</strong>. On the day, each team fills in <strong>Call</strong>.</p>
 <h2>8. People and the rollback plan</h2>
