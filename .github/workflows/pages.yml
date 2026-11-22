@@ -27,12 +27,15 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# Two jobs, as in GitHub's own Pages template. Until 22 Nov this was one job,
+# and on 21-22 Nov the deploy step ran within a second of the upload and found
+# "0 artifacts" in three of four runs, though the upload had finished and the
+# artifact was listed afterwards (the fourth found it, then Pages answered
+# "Deployment failed, try again later"). A separate deploy job starts only once
+# the build job has ended, by which time the artifact is listed.
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
 
@@ -47,5 +50,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v5
