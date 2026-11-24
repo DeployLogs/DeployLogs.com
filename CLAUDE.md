@@ -53,6 +53,7 @@ which posts bring people here. It is the site's only script.
 
 - `count.js` at the root is GoatCounter's own script (ISC licence), copied so
   the page runs a pinned copy; its count goes to `deploylogs.goatcounter.com`.
+  It is in the copy list in `.github/workflows/pages.yml`; without that it 404s.
   To update it, replace the file from `https://gc.zgo.at/count.js`, read the
   diff, and bump `?v=` on every page.
 - Every page gets the script line before `</body>`. A new page without it
