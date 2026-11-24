@@ -41,11 +41,24 @@ examples change with them.
 
 ## No cookies, so no cookie banner
 
-The site sets no cookies, runs no scripts and loads nothing from another
+The site sets no cookies and loads no fonts, embeds or widgets from another
 company (checked 18 Oct, including the live response headers). That is why it
-needs no consent banner. Adding analytics, web fonts from a service, an embed
-or a chat widget changes that: decide it deliberately, and update the privacy
-policy at the same time.
+needs no consent banner. Adding web fonts from a service, an embed or a chat
+widget changes that: decide it deliberately, and update the privacy policy at
+the same time.
+
+Decided 24 Nov: visits are counted with GoatCounter (no cookies, no personal
+data, Country and Region turned off), so tagged links (`utm_campaign`) show
+which posts bring people here. It is the site's only script.
+
+- `count.js` at the root is GoatCounter's own script (ISC licence), copied so
+  the page runs a pinned copy; its count goes to `deploylogs.goatcounter.com`.
+  To update it, replace the file from `https://gc.zgo.at/count.js`, read the
+  diff, and bump `?v=` on every page.
+- Every page gets the script line before `</body>`. A new page without it
+  simply isn't counted.
+- The privacy page's "This website" section says what is counted. Keep it in
+  step with the GoatCounter site settings.
 
 ## Voice
 
