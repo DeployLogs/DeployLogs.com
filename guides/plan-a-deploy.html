@@ -51,6 +51,7 @@
 <p>Do this weeks before the deploy, with every team. Each team fills in its own steps.</p>
 <h2>1. Overview</h2>
 <p>Fill in <strong>Deploy name</strong>, <strong>Planned start</strong> and <strong>Must be finished by</strong>.</p>
+<p>If your team keeps tickets in a tracker, fill in <strong>Ticket links start with</strong>: a ticket link without the key on the end, such as https://yourcompany.atlassian.net/browse/. Keys typed in a Ticket column then become links.</p>
 <h2>2. Changes</h2>
 <p>One row per change: a feature, a fix, a data model change. When you type its name, DeployLogs gives it an <strong>ID</strong> such as CHG-001. Fill in its <strong>Team</strong> and <strong>Business owner</strong>. Steps, smoke tests and record counts pick a change by its ID.</p>
 <h2>3. Teams</h2>
@@ -65,6 +66,7 @@
 <h2>5. Steps</h2>
 <p>Each team adds its steps to the tab for that stage. For each step: <strong>Change (ID)</strong>, <strong>Team</strong>, <strong>Step</strong>, <strong>How to do it</strong>, <strong>Owner</strong> and <strong>Backup owner</strong>. The <strong>ID</strong> is set for you.</p>
 <p>When you pick a change, <strong>Team</strong> fills in from the Changes tab. Change it if another team does the step. Leave Change (ID) blank for general steps, like a backup.</p>
+<p>Put the step's ticket key, such as CRM-102, in <strong>Ticket</strong>. Separate several with commas. Changes, Record counts and Smoke tests have a Ticket column too.</p>
 <p>The order of the rows is the order they run: drag a row to move it, and do not sort the stage tabs. The <strong>Runlist</strong> tab shows every stage's steps in order.</p>
 <p>Then the estimate, the waits and handoffs, and the rollback. Each has its own guide: <a href="estimates.html">Estimates and practice runs</a>, <a href="order-and-handoffs.html">Order, waits and handoffs</a>.</p>
 <h2>6. Rollback for every step</h2>

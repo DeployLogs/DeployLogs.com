@@ -71,7 +71,7 @@
       <figcaption>Runlist</figcaption>
       <div class="sheet" role="region" aria-label="Runlist" tabindex="0">
         <table class="gs wide">
-          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">D</th><th scope="col" class="col">F</th><th scope="col" class="col">J</th><th scope="col" class="col">K</th><th scope="col" class="col">Z</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in num">Run order</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">Team</th><th scope="col" class="hd in">Step</th><th scope="col" class="hd in">Waits for (IDs)</th><th scope="col" class="hd in">Hands over</th><th scope="col" class="hd calc">Can start?</th></tr></thead>
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">D</th><th scope="col" class="col">F</th><th scope="col" class="col">K</th><th scope="col" class="col">L</th><th scope="col" class="col">AA</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in num">Run order</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">Team</th><th scope="col" class="hd in">Step</th><th scope="col" class="hd in">Waits for (IDs)</th><th scope="col" class="hd in">Hands over</th><th scope="col" class="hd calc">Can start?</th></tr></thead>
           <tbody>
             <tr><th scope="row" class="rownum">9</th><td class="num">8</td><td>DEP-003</td><td>Billing</td><td>Turn on the new billing feature</td><td></td><td></td><td class="good">Ready</td></tr>
             <tr><th scope="row" class="rownum">10</th><td class="num">9</td><td>DEP-004</td><td>Billing</td><td>Deploy invoice and credit memo templates</td><td>DEP-003</td><td>Invoice and credit memo template IDs, for the integration release</td><td class="warn">Waiting on DEP-003 (Billing)</td></tr>
@@ -91,7 +91,7 @@
       <figcaption>Data migration</figcaption>
       <div class="sheet" role="region" aria-label="Data migration" tabindex="0">
         <table class="gs wide">
-          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">D</th><th scope="col" class="col">M</th><th scope="col" class="col">N</th><th scope="col" class="col">O</th><th scope="col" class="col">Q</th><th scope="col" class="col">R</th><th scope="col" class="col">S</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">Step</th><th scope="col" class="hd in num">Owner estimate (hrs)</th><th scope="col" class="hd in num">Practice run 1 (hrs)</th><th scope="col" class="hd in num">Practice run 2 (hrs)</th><th scope="col" class="hd in num">Data size factor</th><th scope="col" class="hd calc num">Plan hours</th><th scope="col" class="hd calc">Estimate source</th></tr></thead>
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">D</th><th scope="col" class="col">N</th><th scope="col" class="col">O</th><th scope="col" class="col">P</th><th scope="col" class="col">R</th><th scope="col" class="col">S</th><th scope="col" class="col">T</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">Step</th><th scope="col" class="hd in num">Owner estimate (hrs)</th><th scope="col" class="hd in num">Practice run 1 (hrs)</th><th scope="col" class="hd in num">Practice run 2 (hrs)</th><th scope="col" class="hd in num">Data size factor</th><th scope="col" class="hd calc num">Plan hours</th><th scope="col" class="hd calc">Estimate source</th></tr></thead>
           <tbody>
             <tr><th scope="row" class="rownum">2</th><td>MIG-001</td><td>Run the account migration</td><td class="num">3.0</td><td class="num">3.0</td><td class="num">2.5</td><td class="num">1.4</td><td class="num">4.2</td><td class="good">Practiced</td></tr>
             <tr><th scope="row" class="rownum">3</th><td>MIG-002</td><td>Migrate billing accounts</td><td class="num">4.0</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num">4.0</td><td class="warn">Owner&#x27;s guess</td></tr>
@@ -112,17 +112,18 @@
           <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">C</th></tr></thead>
           <tbody>
             <tr><th scope="row" class="rownum">1</th><td class="title">Deploy overview</td><td></td><td class="bold">Where this comes from</td></tr>
-            <tr><th scope="row" class="rownum">7</th><td class="section">Where we are</td><td class="section"></td><td class="section"></td></tr>
-            <tr><th scope="row" class="rownum">9</th><td>Steps left</td><td>19</td><td class="origin">Steps that are not Done or Skipped.</td></tr>
-            <tr><th scope="row" class="rownum">16</th><td>Projected finish</td><td>Sun 29 Nov, 12:12 AM</td><td class="origin">Now (or the planned start, if that is later) plus plan hours left and planned waits left. Assumes steps run one after another.</td></tr>
-            <tr><th scope="row" class="rownum">17</th><td>On track?</td><td class="good">Yes, 29.8 hrs to spare</td><td class="origin">Projected finish compared with the deadline.</td></tr>
-            <tr><th scope="row" class="rownum">35</th><td class="section">If something goes wrong</td><td class="section"></td><td class="section"></td></tr>
-            <tr><th scope="row" class="rownum">36</th><td>Hours to roll back everything</td><td>13.0</td><td class="origin">Plan hours of every step on the Rollback tab, except Skipped ones.</td></tr>
-            <tr><th scope="row" class="rownum">39</th><td>Latest safe time to keep going</td><td>Sat 28 Nov, 7:48 AM</td><td class="origin">Deadline minus plan hours left, planned waits left and the time to roll back everything.</td></tr>
-            <tr><th scope="row" class="rownum">41</th><td class="section">How solid is the plan</td><td class="section"></td><td class="section"></td></tr>
-            <tr><th scope="row" class="rownum">42</th><td>Plan hours backed by a practice run</td><td>44%</td><td class="origin">Plan hours of Practiced steps, out of all plan hours.</td></tr>
-            <tr><th scope="row" class="rownum">44</th><td>Steps with no estimate</td><td class="bad">2</td><td class="origin">Steps whose estimate source is Missing.</td></tr>
-            <tr><th scope="row" class="rownum">47</th><td>Teams not ready</td><td class="bad">2</td><td class="origin">Teams whose &quot;Ready?&quot; on the Teams tab is Not ready or No steps listed.</td></tr>
+            <tr><th scope="row" class="rownum">7</th><td>Ticket links start with</td><td></td><td class="origin">Type it in column B: a ticket link without the key on the end, such as https://yourcompany.atlassian.net/browse/. Keys typed in a Ticket column then become links.</td></tr>
+            <tr><th scope="row" class="rownum">8</th><td class="section">Where we are</td><td class="section"></td><td class="section"></td></tr>
+            <tr><th scope="row" class="rownum">10</th><td>Steps left</td><td>19</td><td class="origin">Steps that are not Done or Skipped.</td></tr>
+            <tr><th scope="row" class="rownum">17</th><td>Projected finish</td><td>Sun 29 Nov, 12:12 AM</td><td class="origin">Now (or the planned start, if that is later) plus plan hours left and planned waits left. Assumes steps run one after another.</td></tr>
+            <tr><th scope="row" class="rownum">18</th><td>On track?</td><td class="good">Yes, 29.8 hrs to spare</td><td class="origin">Projected finish compared with the deadline.</td></tr>
+            <tr><th scope="row" class="rownum">36</th><td class="section">If something goes wrong</td><td class="section"></td><td class="section"></td></tr>
+            <tr><th scope="row" class="rownum">37</th><td>Hours to roll back everything</td><td>13.0</td><td class="origin">Plan hours of every step on the Rollback tab, except Skipped ones.</td></tr>
+            <tr><th scope="row" class="rownum">40</th><td>Latest safe time to keep going</td><td>Sat 28 Nov, 7:48 AM</td><td class="origin">Deadline minus plan hours left, planned waits left and the time to roll back everything.</td></tr>
+            <tr><th scope="row" class="rownum">42</th><td class="section">How solid is the plan</td><td class="section"></td><td class="section"></td></tr>
+            <tr><th scope="row" class="rownum">43</th><td>Plan hours backed by a practice run</td><td>44%</td><td class="origin">Plan hours of Practiced steps, out of all plan hours.</td></tr>
+            <tr><th scope="row" class="rownum">45</th><td>Steps with no estimate</td><td class="bad">2</td><td class="origin">Steps whose estimate source is Missing.</td></tr>
+            <tr><th scope="row" class="rownum">48</th><td>Teams not ready</td><td class="bad">2</td><td class="origin">Teams whose &quot;Ready?&quot; on the Teams tab is Not ready or No steps listed.</td></tr>
           </tbody>
         </table>
       </div>
@@ -136,11 +137,11 @@
       <figcaption>Changes</figcaption>
       <div class="sheet" role="region" aria-label="Changes" tabindex="0">
         <table class="gs wide">
-          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">F</th><th scope="col" class="col">I</th><th scope="col" class="col">K</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">Change</th><th scope="col" class="hd calc num">Steps</th><th scope="col" class="hd calc num">Smoke tests</th><th scope="col" class="hd calc">Covered?</th></tr></thead>
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">C</th><th scope="col" class="col">G</th><th scope="col" class="col">J</th><th scope="col" class="col">L</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">Change</th><th scope="col" class="hd in">Ticket</th><th scope="col" class="hd calc num">Steps</th><th scope="col" class="hd calc num">Smoke tests</th><th scope="col" class="hd calc">Covered?</th></tr></thead>
           <tbody>
-            <tr><th scope="row" class="rownum">2</th><td>CHG-001</td><td>New billing feature: billing attributes on accounts</td><td class="num">2</td><td class="num">1</td><td class="bad">Rollback missing</td></tr>
-            <tr><th scope="row" class="rownum">3</th><td>CHG-002</td><td>New invoice and credit memo templates</td><td class="num">1</td><td class="num">1</td><td class="warn">Not signed off yet</td></tr>
-            <tr><th scope="row" class="rownum">7</th><td>CHG-006</td><td>Customer records flow to ERP</td><td class="num">2</td><td class="bad num">0</td><td class="bad">No smoke test</td></tr>
+            <tr><th scope="row" class="rownum">2</th><td>CHG-001</td><td>New billing feature: billing attributes on accounts</td><td>BILL-210</td><td class="num">2</td><td class="num">1</td><td class="bad">Rollback missing</td></tr>
+            <tr><th scope="row" class="rownum">3</th><td>CHG-002</td><td>New invoice and credit memo templates</td><td>BILL-214</td><td class="num">1</td><td class="num">1</td><td class="warn">Not signed off yet</td></tr>
+            <tr><th scope="row" class="rownum">7</th><td>CHG-006</td><td>Customer records flow to ERP</td><td>ERP-17</td><td class="num">2</td><td class="bad num">0</td><td class="bad">No smoke test</td></tr>
           </tbody>
         </table>
       </div>
@@ -154,7 +155,7 @@
       <figcaption>Smoke tests</figcaption>
       <div class="sheet" role="region" aria-label="Smoke tests" tabindex="0">
         <table class="gs wide">
-          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">D</th><th scope="col" class="col">K</th><th scope="col" class="col">O</th><th scope="col" class="col">P</th><th scope="col" class="col">R</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">What we are testing</th><th scope="col" class="hd in">Result</th><th scope="col" class="hd in">Business sign-off by</th><th scope="col" class="hd in">Business sign-off</th><th scope="col" class="hd calc">Sign-off check</th></tr></thead>
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">D</th><th scope="col" class="col">L</th><th scope="col" class="col">P</th><th scope="col" class="col">Q</th><th scope="col" class="col">S</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">What we are testing</th><th scope="col" class="hd in">Result</th><th scope="col" class="hd in">Business sign-off by</th><th scope="col" class="hd in">Business sign-off</th><th scope="col" class="hd calc">Sign-off check</th></tr></thead>
           <tbody>
             <tr><th scope="row" class="rownum">2</th><td>TST-001</td><td>A new order syncs to billing on the right billing account</td><td class="good">Passed</td><td>Morgan</td><td class="good">Approved</td><td class="good">Signed off</td></tr>
             <tr><th scope="row" class="rownum">4</th><td>TST-003</td><td>Invoice uses the new template</td><td class="good">Passed</td><td>Alex</td><td></td><td class="warn">Waiting for sign-off</td></tr>
@@ -173,7 +174,7 @@
       <figcaption>Record counts</figcaption>
       <div class="sheet" role="region" aria-label="Record counts" tabindex="0">
         <table class="gs wide">
-          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">I</th><th scope="col" class="col">J</th><th scope="col" class="col">L</th><th scope="col" class="col">O</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">What is moving</th><th scope="col" class="hd in num">Records before</th><th scope="col" class="hd in num">Records expected after</th><th scope="col" class="hd in num">Records loaded</th><th scope="col" class="hd calc">Match</th></tr></thead>
+          <thead><tr><th scope="col" class="corner"></th><th scope="col" class="col">A</th><th scope="col" class="col">B</th><th scope="col" class="col">J</th><th scope="col" class="col">K</th><th scope="col" class="col">M</th><th scope="col" class="col">P</th></tr><tr><th scope="row" class="rownum">1</th><th scope="col" class="hd in">ID</th><th scope="col" class="hd in">What is moving</th><th scope="col" class="hd in num">Records before</th><th scope="col" class="hd in num">Records expected after</th><th scope="col" class="hd in num">Records loaded</th><th scope="col" class="hd calc">Match</th></tr></thead>
           <tbody>
             <tr><th scope="row" class="rownum">2</th><td>REC-001</td><td>Accounts</td><td class="num">12,480</td><td class="num">12,480</td><td class="num">12,480</td><td class="good">Matches</td></tr>
             <tr><th scope="row" class="rownum">3</th><td>REC-002</td><td>Billing accounts</td><td class="num">9,310</td><td class="num">8,655</td><td class="num">8,642</td><td class="bad">Does not match</td></tr>
